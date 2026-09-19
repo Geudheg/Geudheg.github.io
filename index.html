@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>معرض أعمالي | مطور تطبيقات Flutter</title>
+  <title>ريان محمد نعمان علي | مطور تطبيقات ومبرمج أنظمة</title>
   
-  <!-- خط عربي حديث وأيقونات FontAwesome -->
+  <!-- الخطوط العربية والأيقونات -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    :root {
-      --bg-dark: #090d16;
-      --card-bg: rgba(22, 30, 49, 0.7);
-      --primary: #00d2ff;
-      --secondary: #3a7bd5;
-      --text-main: #f1f5f9;
+    /* ألوان الوضع الليلي (الافتراضي) */
+    :root[data-theme="dark"] {
+      --bg-body: #0a0f1d;
+      --bg-card: rgba(19, 27, 46, 0.75);
+      --bg-card-hover: rgba(26, 38, 66, 0.9);
+      --nav-bg: rgba(10, 15, 29, 0.85);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --border-color: rgba(255, 255, 255, 0.08);
-      --accent: #10b981;
+      --primary: #00d2ff;
+      --primary-glow: rgba(0, 210, 255, 0.25);
+      --accent-purple: #8b5cf6;
+      --badge-bg: rgba(0, 210, 255, 0.1);
+      --stat-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    /* ألوان الوضع النهاري */
+    :root[data-theme="light"] {
+      --bg-body: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --nav-bg: rgba(255, 255, 255, 0.85);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --primary: #0284c7;
+      --primary-glow: rgba(2, 132, 199, 0.2);
+      --accent-purple: #7c3aed;
+      --badge-bg: rgba(2, 132, 199, 0.1);
+      --stat-bg: rgba(0, 0, 0, 0.03);
     }
 
     * {
@@ -29,35 +50,36 @@
       box-sizing: border-box;
       font-family: 'Tajawal', sans-serif;
       scroll-behavior: smooth;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-body);
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* خلفية ضوئية جمالية */
+    /* إضاءة خلفية جمالية */
     .glow-bg {
       position: fixed;
-      top: -150px;
-      right: -150px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+      top: -100px;
+      right: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
       z-index: -1;
       pointer-events: none;
     }
 
-    /* شريط التنقل */
+    /* شريط التنقل العلوي */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 8%;
-      background: rgba(9, 13, 22, 0.8);
-      backdrop-filter: blur(12px);
+      padding: 1.1rem 8%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -65,102 +87,139 @@
     }
 
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .nav-links {
+    .nav-actions {
       display: flex;
-      gap: 1.5rem;
-      list-style: none;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
+    /* زر التبديل بين الليلي والنهاري */
+    .theme-toggle-btn {
+      background: var(--stat-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
       transition: 0.3s;
     }
 
-    .nav-links a:hover {
+    .theme-toggle-btn:hover {
+      transform: rotate(20deg) scale(1.08);
+      border-color: var(--primary);
       color: var(--primary);
     }
 
-    .btn-contact {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    .btn-contact-nav {
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
       color: #fff;
       padding: 0.6rem 1.4rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.25);
+      box-shadow: 0 4px 15px var(--primary-glow);
       transition: 0.3s;
     }
 
-    .btn-contact:hover {
+    .btn-contact-nav:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 210, 255, 0.4);
+      box-shadow: 0 6px 22px var(--primary-glow);
     }
 
-    /* الواجهة الرئيسية (Hero) */
+    /* الواجهة الترحيبية (Hero) */
     .hero {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 4rem 8%;
+      padding: 4rem 8% 2rem;
     }
 
-    .badge-status {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: var(--accent);
+      padding: 6px 18px;
+      background: var(--badge-bg);
+      border: 1px solid var(--primary);
+      color: var(--primary);
       border-radius: 50px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 700;
       margin-bottom: 1.5rem;
     }
 
-    .badge-status span {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent);
-    }
-
     .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      line-height: 1.3;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, var(--primary), #a855f7);
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title-sub {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.2rem;
     }
 
     .hero p {
       font-size: 1.15rem;
       color: var(--text-muted);
-      max-width: 650px;
-      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-bottom: 2.2rem;
+    }
+
+    /* بطاقات الإحصائيات الشخصية السريعة */
+    .stats-bar {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-chip {
+      background: var(--stat-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.7rem 1.4rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .stat-chip i {
+      color: var(--primary);
     }
 
     .hero-btns {
@@ -172,18 +231,19 @@
 
     .btn-outline {
       border: 1px solid var(--border-color);
-      background: var(--card-bg);
+      background: var(--bg-card);
       color: var(--text-main);
-      padding: 0.6rem 1.4rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       transition: 0.3s;
     }
 
     .btn-outline:hover {
       border-color: var(--primary);
       color: var(--primary);
+      transform: translateY(-2px);
     }
 
     /* الأقسام العامة */
@@ -197,45 +257,48 @@
     }
 
     .section-title h2 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
     .section-title p {
       color: var(--text-muted);
+      font-size: 1.05rem;
     }
 
-    /* شبكة المهارات */
+    /* بطاقات المهارات */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
     }
 
     .skill-card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      padding: 1.8rem;
-      border-radius: 16px;
-      backdrop-filter: blur(8px);
+      padding: 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
       transition: 0.3s;
     }
 
     .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 210, 255, 0.4);
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+      box-shadow: 0 10px 25px var(--primary-glow);
     }
 
     .skill-icon {
-      font-size: 2rem;
+      font-size: 2.3rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .skill-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
     }
 
     .skill-card p {
@@ -243,17 +306,17 @@
       color: var(--text-muted);
     }
 
-    /* شبكة المشاريع */
+    /* بطاقات المشاريع */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
     .project-card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
       transition: 0.3s;
       display: flex;
@@ -261,23 +324,23 @@
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 210, 255, 0.4);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transform: translateY(-7px);
+      border-color: var(--primary);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.15);
     }
 
-    .project-header {
+    .project-header-icon {
       height: 160px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: linear-gradient(135deg, var(--stat-bg), var(--badge-bg));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
 
     .project-body {
-      padding: 1.8rem;
+      padding: 2rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -287,21 +350,21 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
 
     .project-tag {
-      background: rgba(0, 210, 255, 0.1);
+      background: var(--badge-bg);
       color: var(--primary);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 8px;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .project-body h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
+      font-size: 1.35rem;
+      margin-bottom: 0.7rem;
     }
 
     .project-body p {
@@ -311,65 +374,58 @@
       flex-grow: 1;
     }
 
-    .project-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .project-link {
-      color: var(--text-main);
+    .project-link-btn {
+      color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: 0.3s;
-    }
-
-    .project-link:hover {
-      color: var(--primary);
+      gap: 8px;
     }
 
     /* قسم التواصل */
     .contact-card {
-      background: linear-gradient(135deg, rgba(22, 30, 49, 0.8), rgba(15, 23, 42, 0.9));
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 3.5rem 2rem;
+      border-radius: 28px;
+      padding: 4rem 2rem;
       text-align: center;
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
+      box-shadow: 0 15px 35px var(--primary-glow);
     }
 
     .contact-card h2 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       margin-bottom: 1rem;
     }
 
     .contact-card p {
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      margin-bottom: 2.2rem;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
     }
 
     .social-btn {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      gap: 10px;
+      background: var(--stat-bg);
       border: 1px solid var(--border-color);
       color: var(--text-main);
-      padding: 0.8rem 1.6rem;
+      padding: 0.9rem 1.8rem;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1rem;
       transition: 0.3s;
     }
 
@@ -380,23 +436,21 @@
     }
 
     .social-btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     /* التذييل */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2.2rem;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       border-top: 1px solid var(--border-color);
     }
 
-    /* للهواتف الذكية */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
-      .nav-links { display: none; }
-      nav { justify-content: space-between; }
+      .hero-title-sub { font-size: 1.15rem; }
     }
   </style>
 </head>
@@ -407,70 +461,81 @@
   <!-- الشريط العلوي -->
   <nav>
     <div class="logo">
-      <i class="fa-solid fa-code"></i> مطور فلاتر
+      <i class="fa-solid fa-code"></i> ريان علي
     </div>
-    <ul class="nav-links">
-      <li><a href="#about">عني</a></li>
-      <li><a href="#skills">المهارات</a></li>
-      <li><a href="#projects">المشاريع</a></li>
-      <li><a href="#contact">تواصل</a></li>
-    </ul>
-    <a href="https://wa.me/967777000000" class="btn-contact" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> تواصل معي
-    </a>
+    
+    <div class="nav-actions">
+      <!-- زر التبديل بين الليلي والنهاري -->
+      <button class="theme-toggle-btn" id="themeToggle" title="تبديل الوضع">
+        <i class="fa-solid fa-sun" id="themeIcon"></i>
+      </button>
+      <a href="https://wa.me/967777000000" class="btn-contact-nav" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> تواصل معي
+      </a>
+    </div>
   </nav>
 
   <!-- الواجهة الترحيبية -->
-  <header class="hero" id="about">
-    <div class="badge-status">
-      <span></span> متاح للعمل على مشاريع جديدة
+  <header class="hero">
+    <div class="hero-badge">
+      <i class="fa-solid fa-circle-check"></i> متاح للعمل الحر والتوظيف
     </div>
-    <h1>أهلاً بك، أنا <span>مطور تطبيقات Mobile & Full-Stack</span></h1>
+    <h1>أنا <span>ريان محمد نعمان علي</span></h1>
+    <div class="hero-title-sub">مطور تطبيقات هواتف ذكية (Flutter) ومبرمج أنظمة متكاملة</div>
+    
     <p>
-      أقوم بتطوير وتصميم تطبيقات هواتف ذكية متكاملة وسريعة باستخدام <strong>Flutter</strong>، مع ربط واجهات برمجة التطبيقات (APIs)، وقواعد البيانات السحابية والمحلية، ودمجها مع أنظمة تخطيط الموارد <strong>ERPNext</strong>.
+      أقوم بتصميم وتطوير تطبيقات الموبايل والديسكتوب السريعة والمعتمدة على كود نظيف وهيكلية برمجية متينة، مع دمج واجهات الـ APIs، والربط الاحترافي مع أنظمة الشركات وإدارة الموارد <strong>ERPNext</strong>.
     </p>
+
+    <!-- معلوماتك الشخصية في بطاقات سريعة -->
+    <div class="stats-bar">
+      <div class="stat-chip"><i class="fa-solid fa-user"></i> العمر: 25 سنة</div>
+      <div class="stat-chip"><i class="fa-solid fa-location-dot"></i> اليمن - صنعاء (متاح عن بُعد)</div>
+      <div class="stat-chip"><i class="fa-solid fa-bolt"></i> جاهزية عالية وتسليم دقيق</div>
+    </div>
+
     <div class="hero-btns">
-      <a href="#projects" class="btn-contact">استعراض المشاريع <i class="fa-solid fa-arrow-left"></i></a>
-      <a href="https://wa.me/967777000000" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> محادثة سريعة</a>
+      <a href="#projects" class="btn-contact-nav">استعراض أعمالي <i class="fa-solid fa-arrow-left"></i></a>
+      <a href="https://wa.me/967777000000" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> محادثة واتساب</a>
     </div>
   </header>
 
   <!-- قسم المهارات -->
   <section id="skills">
     <div class="section-title">
-      <h2>المهارات والتقنيات</h2>
-      <p>أبرز الأدوات والتقنيات التي أستخدمها في بناء التطبيقات</p>
+      <h2>المهارات والتقنيات البرمجية</h2>
+      <p>الأدوات والتقنيات التي أعتمد عليها في بناء مشاريع متكاملة</p>
     </div>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-icon"><i class="fa-brands fa-flutter"></i></div>
-        <h3>Flutter & Dart</h3>
-        <p>تطوير تطبيقات متعددة المنصات (Android, iOS, Windows Desktop) بأداء عالي وتصميمات تفاعلية جذابة.</p>
+        <h3>تطوير Flutter & Dart</h3>
+        <p>بناء تطبيقات تعمل على منصات (Android, iOS, Windows) بتصاميم تفاعلية مميزة وأداء عالي.</p>
       </div>
       <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="skill-icon"><i class="fa-solid fa-diagram-project"></i></div>
         <h3>إدارة الحالة (State Management)</h3>
-        <p>بناء هيكلية برمجية نظيفة وقابلة للتوسع باستخدام BLoC و Riverpod و Provider مع Clean Architecture.</p>
+        <p>استخدام BLoC و Riverpod و Provider مع تطبيق معايير Clean Architecture لفصل المنطق البرمجي.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <h3>ربط الـ APIs والباك إند</h3>
+        <p>التعامل مع بروتوكولات REST APIs و JSON عبر مكتبة Dio، وخبرة في برمجة الباك إند باستخدام PHP و Laravel.</p>
       </div>
       <div class="skill-card">
         <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
-        <h3>REST APIs & Backend</h3>
-        <p>ربط التطبيقات مع الـ APIs والتعامل مع JSON باستخدام Dio، وخبرة في تطوير الباك إند عبر PHP و Laravel.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
-        <h3>ERPNext & Frappe</h3>
-        <p>تخصيص وبرمجة نقاط البيع (POS)، التقارير، وربط العمليات المخزنية والمبيعات بأنظمة الشركات والمتاجر.</p>
+        <h3>أنظمة ERPNext & Frappe</h3>
+        <p>تخصيص وبرمجة نقاط البيع (POS)، كتابة تقارير مخصصة، وضبط دورات المبيعات والمخزون والتصنيع.</p>
       </div>
       <div class="skill-card">
         <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-        <h3>قواعد البيانات والتخزين المحلي</h3>
-        <p>التعامل مع Hive للتخزين المحلي ودعم العمل بدون إنترنت (Offline-first)، بالإضافة إلى Firebase و MySQL.</p>
+        <h3>قواعد البيانات (Offline First)</h3>
+        <p>إدارة التخزين المحلي باستخدام Hive و SQLite لتمكين العمل بدون إنترنت، بالإضافة إلى Firebase و MySQL.</p>
       </div>
       <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>Git & إدارة المشاريع</h3>
-        <p>إدارة الإصدارات، العمل الجماعي على GitHub و Gitea، وتطبيق أفضل معايير الأمان وحماية البيانات.</p>
+        <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
+        <h3>التحكم بالإصدارات Git</h3>
+        <p>إدارة وتتبع الأكواد، إنشاء الفروع (Branches)، وحل التعارضات باستخدام Git و GitHub و Gitea.</p>
       </div>
     </div>
   </section>
@@ -478,64 +543,64 @@
   <!-- قسم المشاريع -->
   <section id="projects">
     <div class="section-title">
-      <h2>نماذج من أعمالي</h2>
-      <p>بعض الأنظمة والتطبيقات التي قمت بالعمل عليها</p>
+      <h2>نماذج من المشاريع</h2>
+      <p>أمثلة للأنظمة والتطبيقات التي قمت ببرمجتها</p>
     </div>
     <div class="projects-grid">
       <!-- مشروع 1 -->
       <div class="project-card">
-        <div class="project-header">
+        <div class="project-header-icon">
           <i class="fa-solid fa-cash-register"></i>
         </div>
         <div class="project-body">
           <div class="project-tags">
             <span class="project-tag">Flutter</span>
-            <span class="project-tag">ERPNext API</span>
+            <span class="project-tag">ERPNext</span>
             <span class="project-tag">Offline Hive</span>
           </div>
-          <h3>نظام كاشير ونقاط بيع ذكي (Smart POS)</h3>
-          <p>تطبيق كاشير متقدم يدعم قراءة الباركود، الفواتير السريعة، وتعدد وحدات القياس، مع إمكانية العمل بدون إنترنت ومزامنة البيانات لاحقاً.</p>
-          <div class="project-links">
-            <a href="https://wa.me/967777000000" class="project-link" target="_blank"><i class="fa-solid fa-circle-info"></i> طلب عرض توضيحي</a>
-          </div>
+          <h3>نظام كاشير ونقاط بيع متقدم (POS)</h3>
+          <p>تطبيق نقطة بيع يدعم الباركود السريع، تعدد وحدات القياس، حفظ الفواتير أوفلاين مع المزامنة السحابية التلقائية.</p>
+          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
+            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
+          </a>
         </div>
       </div>
 
       <!-- مشروع 2 -->
       <div class="project-card">
-        <div class="project-header">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <div class="project-header-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
         </div>
         <div class="project-body">
           <div class="project-tags">
-            <span class="project-tag">Flutter</span>
-            <span class="project-tag">Laravel API</span>
-            <span class="project-tag">Payment Gateway</span>
+            <span class="project-tag">Flutter Mobile</span>
+            <span class="project-tag">Laravel REST API</span>
+            <span class="project-tag">BLoC</span>
           </div>
-          <h3>تطبيق متجر وتوصيل طلبات متكامل</h3>
-          <p>تطبيق تجارة إلكترونية كامل يحتوي على تصنيفات المنتجات، سلة المشتريات، تتبع الطلبات خطوة بخطوة، ونظام إشعارات فورية.</p>
-          <div class="project-links">
-            <a href="https://wa.me/967777000000" class="project-link" target="_blank"><i class="fa-solid fa-circle-info"></i> التفاصيل والمعاينة</a>
-          </div>
+          <h3>تطبيق متجر إلكتروني وسلة مشتريات</h3>
+          <p>تطبيق تسوق متكامل يحتوي على تصنيفات، تتبع حالة الطلب خطوة بخطوة، ونظام حسابات العملاء والإشعارات.</p>
+          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
+            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
+          </a>
         </div>
       </div>
 
       <!-- مشروع 3 -->
       <div class="project-card">
-        <div class="project-header">
-          <i class="fa-solid fa-chart-line"></i>
+        <div class="project-header-icon">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
         </div>
         <div class="project-body">
           <div class="project-tags">
             <span class="project-tag">Flutter Desktop</span>
-            <span class="project-tag">Excel/PDF Export</span>
+            <span class="project-tag">PDF / Excel Export</span>
             <span class="project-tag">SQL</span>
           </div>
-          <h3>نظام إدارة المشتريات والتقارير</h3>
-          <p>تطبيق ويندوز وموبايل لإدارة فواتير المشتريات، كشوفات حساب الموردين والعملاء، وتصدير التقارير المالية والطباعة المباشرة.</p>
-          <div class="project-links">
-            <a href="https://wa.me/967777000000" class="project-link" target="_blank"><i class="fa-solid fa-circle-info"></i> طلب معاينة</a>
-          </div>
+          <h3>نظام إدارة المشتريات ومتابعة الحسابات</h3>
+          <p>برنامج لويندوز والموبايل لإدارة أوامر الشراء، كشوفات حساب الموردين، وإصدار التقارير وطباعتها بسهولة.</p>
+          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
+            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -544,18 +609,17 @@
   <!-- قسم التواصل -->
   <section id="contact">
     <div class="contact-card">
-      <h2>هل لديك فكرة مشروع أو ترغب بالتوظيف؟</h2>
-      <p>أنا متاح للعمل الحر (Freelance) أو الانضمام لفريق عمل لتنفيذ مشاريع برمجية مبتكرة وعالية الجودة.</p>
+      <h2>هل تبحث عن مطور لمشروعك القادم؟</h2>
+      <p>يسعدني التواصل معك لمناقشة أفكار المشاريع أو الانضمام للعمل ضمن فريق برمجيات متميز.</p>
+      
       <div class="social-links">
-        <!-- عدل رقم الواتساب هنا -->
+        <!-- عدل رقمك في الواتساب هنا -->
         <a href="https://wa.me/967777000000" class="social-btn whatsapp" target="_blank">
           <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
         </a>
-        <!-- عدل حسابك في جيت هب هنا -->
-        <a href="https://github.com" class="social-btn" target="_blank">
+        <a href="https://github.com/Geudheg" class="social-btn" target="_blank">
           <i class="fa-brands fa-github"></i> GitHub
         </a>
-        <!-- عدل بريدك هنا -->
         <a href="mailto:your-email@gmail.com" class="social-btn">
           <i class="fa-solid fa-envelope"></i> البريد الإلكتروني
         </a>
@@ -565,8 +629,37 @@
 
   <!-- التذييل -->
   <footer>
-    <p>جميع الحقوق محفوظة &copy; 2026 | مطور تطبيقات الهواتف والأنظمة</p>
+    <p>جميع الحقوق محفوظة &copy; 2026 | ريان محمد نعمان علي</p>
   </footer>
+
+  <!-- كود التبديل الذكي بين الوضع الليلي والنهاري -->
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
+
+    // استرجاع الثيم المحفوظ أو استخدام الليلي كافتراضي
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+
+    function updateIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fa-solid fa-sun';
+      } else {
+        themeIcon.className = 'fa-solid fa-moon';
+      }
+    }
+  </script>
 
 </body>
 </html>
