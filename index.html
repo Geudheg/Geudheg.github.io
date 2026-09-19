@@ -5,43 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ريان محمد نعمان علي | مطور تطبيقات ومبرمج أنظمة</title>
   
-  <!-- الخطوط العربية والأيقونات -->
+  <!-- خطوط وأيقونات حديثة -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ألوان الوضع الليلي (الافتراضي) */
+    /* ألوان الوضع الليلي (Ultra Dark & Cyan/Emerald) */
     :root[data-theme="dark"] {
-      --bg-body: #0a0f1d;
-      --bg-card: rgba(19, 27, 46, 0.75);
-      --bg-card-hover: rgba(26, 38, 66, 0.9);
-      --nav-bg: rgba(10, 15, 29, 0.85);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --primary: #00d2ff;
-      --primary-glow: rgba(0, 210, 255, 0.25);
-      --accent-purple: #8b5cf6;
-      --badge-bg: rgba(0, 210, 255, 0.1);
-      --stat-bg: rgba(255, 255, 255, 0.04);
+      --bg: #030712;
+      --surface: #0f172a;
+      --surface-card: #1e293b;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+      --accent: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-glow: rgba(16, 185, 129, 0.2);
+      --term-bg: #090d16;
+      --nav-bg: rgba(3, 7, 18, 0.85);
     }
 
-    /* ألوان الوضع النهاري */
+    /* ألوان الوضع النهاري (Clean White & Slate) */
     :root[data-theme="light"] {
-      --bg-body: #f8fafc;
-      --bg-card: rgba(255, 255, 255, 0.9);
-      --bg-card-hover: #ffffff;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-card: #f1f5f9;
+      --border: rgba(0, 0, 0, 0.08);
+      --text: #0f172a;
+      --text-dim: #64748b;
+      --accent: #059669;
+      --accent-cyan: #0284c7;
+      --accent-glow: rgba(5, 150, 105, 0.15);
+      --term-bg: #1e293b;
       --nav-bg: rgba(255, 255, 255, 0.85);
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border-color: rgba(0, 0, 0, 0.08);
-      --primary: #0284c7;
-      --primary-glow: rgba(2, 132, 199, 0.2);
-      --accent-purple: #7c3aed;
-      --badge-bg: rgba(2, 132, 199, 0.1);
-      --stat-bg: rgba(0, 0, 0, 0.03);
     }
 
     * {
@@ -49,611 +47,616 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Tajawal', sans-serif;
-      scroll-behavior: smooth;
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
     }
 
     body {
-      background-color: var(--bg-body);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* إضاءة خلفية جمالية */
-    .glow-bg {
-      position: fixed;
-      top: -100px;
-      right: -100px;
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* شريط التنقل العلوي */
+    /* شريط التنقل المتطور */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 8%;
-      background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
     }
 
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    /* زر التبديل بين الليلي والنهاري */
-    .theme-toggle-btn {
-      background: var(--stat-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+    .avatar-glow {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
       transition: 0.3s;
     }
 
-    .theme-toggle-btn:hover {
-      transform: rotate(20deg) scale(1.08);
-      border-color: var(--primary);
-      color: var(--primary);
+    .theme-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.05);
     }
 
-    .btn-contact-nav {
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-      color: #fff;
-      padding: 0.6rem 1.4rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px var(--primary-glow);
-      transition: 0.3s;
-    }
-
-    .btn-contact-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px var(--primary-glow);
-    }
-
-    /* الواجهة الترحيبية (Hero) */
-    .hero {
-      min-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    /* قسم الترحيب (Hero Section) بنمط شبكة شطرنجية */
+    .hero-container {
       padding: 4rem 8% 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      min-height: 80vh;
     }
 
-    .hero-badge {
+    .pill-status {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 18px;
-      background: var(--badge-bg);
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      border-radius: 50px;
-      font-size: 0.95rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent);
+      font-size: 0.88rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 0.8rem;
-      line-height: 1.25;
+    .pulsing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
     }
 
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-title-sub {
-      font-size: 1.4rem;
+    .role-title {
+      font-size: 1.3rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--accent-cyan);
       margin-bottom: 1.2rem;
     }
 
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin-bottom: 2.2rem;
+    .bio-text {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      max-width: 580px;
     }
 
-    /* بطاقات الإحصائيات الشخصية السريعة */
-    .stats-bar {
-      display: flex;
-      gap: 1.2rem;
-      margin-bottom: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .stat-chip {
-      background: var(--stat-bg);
-      border: 1px solid var(--border-color);
-      padding: 0.7rem 1.4rem;
-      border-radius: 14px;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-
-    .stat-chip i {
-      color: var(--primary);
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn-outline {
-      border: 1px solid var(--border-color);
-      background: var(--bg-card);
-      color: var(--text-main);
-      padding: 0.7rem 1.6rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.3s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* الأقسام العامة */
-    section {
-      padding: 5rem 8%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    /* بطاقات المهارات */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.8rem;
-    }
-
-    .skill-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
+    /* نافذة الكود التفاعلية بالجانب */
+    .terminal-window {
+      background: var(--term-bg);
+      border: 1px solid var(--border);
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-6px);
-      background: var(--bg-card-hover);
-      border-color: var(--primary);
-      box-shadow: 0 10px 25px var(--primary-glow);
-    }
-
-    .skill-icon {
-      font-size: 2.3rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-    }
-
-    .skill-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .skill-card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    /* بطاقات المشاريع */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       overflow: hidden;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
+      direction: ltr;
+      text-align: left;
     }
 
-    .project-card:hover {
-      transform: translateY(-7px);
-      border-color: var(--primary);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.15);
-    }
-
-    .project-header-icon {
-      height: 160px;
-      background: linear-gradient(135deg, var(--stat-bg), var(--badge-bg));
+    .terminal-header {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 18px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 3.5rem;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .project-body {
+    .circle { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .c-red { background: #ef4444; }
+    .c-yellow { background: #f59e0b; }
+    .c-green { background: #10b981; }
+    .term-title { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #94a3b8; margin-left: 10px; }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+
+    .kw { color: #f43f5e; font-weight: bold; }
+    .fn { color: #38bdf8; }
+    .str { color: #34d399; }
+    .num { color: #fbbf24; }
+    .cm { color: #64748b; font-style: italic; }
+
+    /* Bento Grid: شبكة المعلومات السريعة */
+    .section-bento {
+      padding: 3rem 8%;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
       padding: 2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
-    .project-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 1.1rem;
+    .bento-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
     }
 
-    .project-tag {
-      background: var(--badge-bg);
-      color: var(--primary);
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
+    .bento-card.col-2 { grid-column: span 2; }
 
-    .project-body h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .project-body p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .project-link-btn {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* قسم التواصل */
-    .contact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 28px;
-      padding: 4rem 2rem;
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto;
-      box-shadow: 0 15px 35px var(--primary-glow);
-    }
-
-    .contact-card h2 {
-      font-size: 2.3rem;
+    .card-icon {
+      font-size: 2rem;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
 
-    .contact-card p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 2.2rem;
+    .bento-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
     }
 
-    .social-links {
+    .bento-card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    /* بطاقات أرقام الهواتف والتواصل المباشر */
+    .contact-phone-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .phone-pill-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+      border-radius: 16px;
       display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .social-btn {
+    .phone-pill-card .phone-title {
+      font-size: 0.85rem;
+      color: var(--text-dim);
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: var(--stat-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.9rem 1.8rem;
-      border-radius: 50px;
-      text-decoration: none;
+      gap: 6px;
+    }
+
+    .phone-pill-card .phone-number {
+      font-family: 'Fira Code', sans-serif;
+      font-size: 1.15rem;
       font-weight: 700;
-      font-size: 1rem;
-      transition: 0.3s;
+      direction: ltr;
+      text-align: right;
+      color: var(--text);
     }
 
-    .social-btn.whatsapp {
-      background: #25D366;
-      color: #fff;
-      border: none;
+    .phone-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
     }
 
-    .social-btn:hover {
-      transform: scale(1.06);
+    .btn-act {
+      flex: 1;
+      padding: 7px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-act.wa {
+      background: rgba(37, 211, 102, 0.15);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-act.call {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .btn-act:hover {
+      filter: brightness(1.15);
+    }
+
+    /* المهارات كشارات (Tags) عصرية */
+    .skills-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .skill-pill {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-pill i {
+      color: var(--accent);
+    }
+
+    /* قسم المشاريع */
+    .projects-container {
+      padding: 3rem 8%;
+    }
+
+    .section-head {
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .proj-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--accent-cyan);
+      padding: 4px 10px;
+      border-radius: 8px;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
     }
 
     /* التذييل */
     footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 8%;
       text-align: center;
-      padding: 2.2rem;
-      color: var(--text-muted);
+      color: var(--text-dim);
       font-size: 0.95rem;
-      border-top: 1px solid var(--border-color);
     }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero-title-sub { font-size: 1.15rem; }
+    /* الاستجابة للهواتف الذكية */
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        padding-top: 2rem;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-card.col-2 {
+        grid-column: span 1;
+      }
+      .contact-phone-boxes {
+        grid-template-columns: 1fr;
+      }
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="glow-bg"></div>
-
-  <!-- الشريط العلوي -->
+  <!-- شريط التنقل العلوي -->
   <nav>
-    <div class="logo">
-      <i class="fa-solid fa-code"></i> ريان علي
+    <div class="brand">
+      <div class="avatar-glow"><i class="fa-solid fa-code"></i></div>
+      <span>ريان علي</span>
     </div>
     
-    <div class="nav-actions">
-      <!-- زر التبديل بين الليلي والنهاري -->
-      <button class="theme-toggle-btn" id="themeToggle" title="تبديل الوضع">
+    <div class="nav-buttons">
+      <!-- زر التبديل الليلي والنهاري -->
+      <button class="theme-btn" id="themeToggle" title="تبديل الثيم">
         <i class="fa-solid fa-sun" id="themeIcon"></i>
       </button>
-      <a href="https://wa.me/967777000000" class="btn-contact-nav" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> تواصل معي
+
+      <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 8px 16px; border-radius: 50px;">
+        <i class="fa-brands fa-whatsapp"></i> واتساب
       </a>
     </div>
   </nav>
 
-  <!-- الواجهة الترحيبية -->
-  <header class="hero">
-    <div class="hero-badge">
-      <i class="fa-solid fa-circle-check"></i> متاح للعمل الحر والتوظيف
-    </div>
-    <h1>أنا <span>ريان محمد نعمان علي</span></h1>
-    <div class="hero-title-sub">مطور تطبيقات هواتف ذكية (Flutter) ومبرمج أنظمة متكاملة</div>
-    
-    <p>
-      أقوم بتصميم وتطوير تطبيقات الموبايل والديسكتوب السريعة والمعتمدة على كود نظيف وهيكلية برمجية متينة، مع دمج واجهات الـ APIs، والربط الاحترافي مع أنظمة الشركات وإدارة الموارد <strong>ERPNext</strong>.
-    </p>
+  <!-- الواجهة الترحيبية الحديثة -->
+  <main class="hero-container">
+    <div class="hero-text">
+      <div class="pill-status">
+        <span class="pulsing-dot"></span> متاح لتنفيذ المشاريع البرمجية
+      </div>
+      <h1>أنا <span>ريان محمد نعمان علي</span></h1>
+      <div class="role-title">مهندس برمجيات • مطور Flutter ومكامل أنظمة ERPNext</div>
+      <p class="bio-text">
+        عمري <strong>25 سنة</strong>، مقيم في <strong>صنعاء، اليمن</strong>. أمتلك خبرة عملية في تطوير تطبيقات الموبايل والديسكتوب باستخدام <strong>Flutter</strong>، مع بناء وربط واجهات الـ <strong>REST APIs</strong> المتقدمة وقواعد البيانات، وتخصيص أنظمة المبيعات والمخازن <strong>ERPNext & Frappe</strong>.
+      </p>
 
-    <!-- معلوماتك الشخصية في بطاقات سريعة -->
-    <div class="stats-bar">
-      <div class="stat-chip"><i class="fa-solid fa-user"></i> العمر: 25 سنة</div>
-      <div class="stat-chip"><i class="fa-solid fa-location-dot"></i> اليمن - صنعاء (متاح عن بُعد)</div>
-      <div class="stat-chip"><i class="fa-solid fa-bolt"></i> جاهزية عالية وتسليم دقيق</div>
-    </div>
-
-    <div class="hero-btns">
-      <a href="#projects" class="btn-contact-nav">استعراض أعمالي <i class="fa-solid fa-arrow-left"></i></a>
-      <a href="https://wa.me/967777000000" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> محادثة واتساب</a>
-    </div>
-  </header>
-
-  <!-- قسم المهارات -->
-  <section id="skills">
-    <div class="section-title">
-      <h2>المهارات والتقنيات البرمجية</h2>
-      <p>الأدوات والتقنيات التي أعتمد عليها في بناء مشاريع متكاملة</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-brands fa-flutter"></i></div>
-        <h3>تطوير Flutter & Dart</h3>
-        <p>بناء تطبيقات تعمل على منصات (Android, iOS, Windows) بتصاميم تفاعلية مميزة وأداء عالي.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-diagram-project"></i></div>
-        <h3>إدارة الحالة (State Management)</h3>
-        <p>استخدام BLoC و Riverpod و Provider مع تطبيق معايير Clean Architecture لفصل المنطق البرمجي.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-        <h3>ربط الـ APIs والباك إند</h3>
-        <p>التعامل مع بروتوكولات REST APIs و JSON عبر مكتبة Dio، وخبرة في برمجة الباك إند باستخدام PHP و Laravel.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
-        <h3>أنظمة ERPNext & Frappe</h3>
-        <p>تخصيص وبرمجة نقاط البيع (POS)، كتابة تقارير مخصصة، وضبط دورات المبيعات والمخزون والتصنيع.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-        <h3>قواعد البيانات (Offline First)</h3>
-        <p>إدارة التخزين المحلي باستخدام Hive و SQLite لتمكين العمل بدون إنترنت، بالإضافة إلى Firebase و MySQL.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
-        <h3>التحكم بالإصدارات Git</h3>
-        <p>إدارة وتتبع الأكواد، إنشاء الفروع (Branches)، وحل التعارضات باستخدام Git و GitHub و Gitea.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
+          <i class="fa-brands fa-whatsapp"></i> تواصل عبر 772851873
+        </a>
+        <a href="https://github.com/Geudheg" class="btn-act" target="_blank" style="background: var(--surface-card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
+          <i class="fa-brands fa-github"></i> معرض GitHub
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- قسم المشاريع -->
-  <section id="projects">
-    <div class="section-title">
-      <h2>نماذج من المشاريع</h2>
-      <p>أمثلة للأنظمة والتطبيقات التي قمت ببرمجتها</p>
-    </div>
-    <div class="projects-grid">
-      <!-- مشروع 1 -->
-      <div class="project-card">
-        <div class="project-header-icon">
-          <i class="fa-solid fa-cash-register"></i>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Flutter</span>
-            <span class="project-tag">ERPNext</span>
-            <span class="project-tag">Offline Hive</span>
-          </div>
-          <h3>نظام كاشير ونقاط بيع متقدم (POS)</h3>
-          <p>تطبيق نقطة بيع يدعم الباركود السريع، تعدد وحدات القياس، حفظ الفواتير أوفلاين مع المزامنة السحابية التلقائية.</p>
-          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
-            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
-          </a>
-        </div>
+    <!-- بطاقة الكود التفاعلي في الجانب -->
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="circle c-red"></span>
+        <span class="circle c-yellow"></span>
+        <span class="circle c-green"></span>
+        <span class="term-title">developer_profile.dart</span>
       </div>
-
-      <!-- مشروع 2 -->
-      <div class="project-card">
-        <div class="project-header-icon">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Flutter Mobile</span>
-            <span class="project-tag">Laravel REST API</span>
-            <span class="project-tag">BLoC</span>
-          </div>
-          <h3>تطبيق متجر إلكتروني وسلة مشتريات</h3>
-          <p>تطبيق تسوق متكامل يحتوي على تصنيفات، تتبع حالة الطلب خطوة بخطوة، ونظام حسابات العملاء والإشعارات.</p>
-          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
-            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- مشروع 3 -->
-      <div class="project-card">
-        <div class="project-header-icon">
-          <i class="fa-solid fa-file-invoice-dollar"></i>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Flutter Desktop</span>
-            <span class="project-tag">PDF / Excel Export</span>
-            <span class="project-tag">SQL</span>
-          </div>
-          <h3>نظام إدارة المشتريات ومتابعة الحسابات</h3>
-          <p>برنامج لويندوز والموبايل لإدارة أوامر الشراء، كشوفات حساب الموردين، وإصدار التقارير وطباعتها بسهولة.</p>
-          <a href="https://wa.me/967777000000" class="project-link-btn" target="_blank">
-            طلب معاينة أو تفاصيل <i class="fa-solid fa-arrow-left"></i>
-          </a>
-        </div>
+      <div class="terminal-body">
+        <span class="kw">class</span> <span class="fn">RayanAli</span> {<br>
+        &nbsp;&nbsp;<span class="kw">final</span> String name = <span class="str">"ريان محمد نعمان علي"</span>;<br>
+        &nbsp;&nbsp;<span class="kw">final</span> int age = <span class="num">25</span>;<br>
+        &nbsp;&nbsp;<span class="kw">final</span> String city = <span class="str">"صنعاء - اليمن"</span>;<br>
+        &nbsp;&nbsp;<span class="kw">final</span> List&lt;String&gt; primaryStack = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Flutter & Dart'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'BLoC & Riverpod'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'ERPNext / Frappe'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Laravel REST APIs'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Hive (Offline First)'</span><br>
+        &nbsp;&nbsp;];<br><br>
+        &nbsp;&nbsp;<span class="fn">bool</span> <span class="fn">isAvailableForHire</span>() =&gt; <span class="kw">true</span>;<br>
+        }
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- قسم التواصل -->
-  <section id="contact">
-    <div class="contact-card">
-      <h2>هل تبحث عن مطور لمشروعك القادم؟</h2>
-      <p>يسعدني التواصل معك لمناقشة أفكار المشاريع أو الانضمام للعمل ضمن فريق برمجيات متميز.</p>
+  <!-- شبكة المعلومات السريعة والأرقام (Bento Grid) -->
+  <section class="section-bento">
+    <div class="bento-grid">
       
-      <div class="social-links">
-        <!-- عدل رقمك في الواتساب هنا -->
-        <a href="https://wa.me/967777000000" class="social-btn whatsapp" target="_blank">
-          <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
-        </a>
-        <a href="https://github.com/Geudheg" class="social-btn" target="_blank">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
-        <a href="mailto:your-email@gmail.com" class="social-btn">
-          <i class="fa-solid fa-envelope"></i> البريد الإلكتروني
-        </a>
+      <!-- بطاقة الأرقام ووسائل الاتصال المباشر -->
+      <div class="bento-card col-2">
+        <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>تواصل مباشر معي</h3>
+        <p>يمكنك الاتصال المباشر أو المحادثة الفورية عبر واتساب على أي من الرقمين التاليين:</p>
+        
+        <div class="contact-phone-boxes">
+          <!-- الرقم الأول: 772851873 -->
+          <div class="phone-pill-card">
+            <div class="phone-title"><i class="fa-solid fa-phone"></i> الخط الأول (يمن موبايل / واتساب)</div>
+            <div class="phone-number">+967 772 851 873</div>
+            <div class="phone-actions">
+              <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+              <a href="tel:+967772851873" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+            </div>
+          </div>
+
+          <!-- الرقم الثاني: 715078374 -->
+          <div class="phone-pill-card">
+            <div class="phone-title"><i class="fa-solid fa-mobile-screen"></i> الخط الثاني (سبأفون / واتساب)</div>
+            <div class="phone-number">+967 715 078 374</div>
+            <div class="phone-actions">
+              <a href="https://wa.me/967715078374" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+              <a href="tel:+967715078374" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- بطاقة نبذة سريعة -->
+      <div class="bento-card">
+        <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
+        <h3>بطاقة التعريف</h3>
+        <p style="margin-bottom: 12px;"><strong>الاسم:</strong> ريان محمد نعمان علي</p>
+        <p style="margin-bottom: 12px;"><strong>العمر:</strong> 25 عاماً</p>
+        <p style="margin-bottom: 12px;"><strong>الموقع:</strong> اليمن - صنعاء</p>
+        <p><strong>نوع العمل:</strong> عن بُعد (Remote) أو مكتبي</p>
+      </div>
+
+      <!-- بطاقة المهارات والترسانة التقنية -->
+      <div class="bento-card col-2">
+        <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
+        <h3>الترسانة التقنية (Tech Stack)</h3>
+        <p>الأدوات والتقنيات التي أعتمد عليها في بناء مشاريع مستقرة وعالية الأداء:</p>
+        <div class="skills-pills">
+          <span class="skill-pill"><i class="fa-brands fa-flutter"></i> Flutter Mobile & Desktop</span>
+          <span class="skill-pill"><i class="fa-solid fa-code"></i> Dart</span>
+          <span class="skill-pill"><i class="fa-solid fa-diagram-project"></i> BLoC & Riverpod</span>
+          <span class="skill-pill"><i class="fa-solid fa-server"></i> ERPNext & Frappe</span>
+          <span class="skill-pill"><i class="fa-brands fa-laravel"></i> Laravel APIs</span>
+          <span class="skill-pill"><i class="fa-solid fa-database"></i> Hive (Offline Storage)</span>
+          <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase</span>
+          <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+        </div>
+      </div>
+
+      <!-- بطاقة الثقة والجودة -->
+      <div class="bento-card">
+        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>الجودة والالتزام</h3>
+        <p>كود نظيف وواضح (Clean Code)، التزام دقيق بالمواعيد المحددة، ودعم فني مستمر بعد تسليم المشروع.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- قسم المشاريع المميزة -->
+  <section class="projects-container">
+    <div class="section-head">
+      <h2>نماذج من المشاريع</h2>
+      <p style="color: var(--text-dim);">أمثلة واقعية لأنظمة وتطبيقات قمت بتطويرها</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div>
+          <div class="proj-badge">نظام نقاط بيع وكاشير</div>
+          <h3>تطبيق POS ذكي يدعم الأوفلاين</h3>
+          <p>تطبيق كاشير متكامل يدعم الباركود المتعدد للوحدات، البيع السريع بدون إنترنت مع التخزين في Hive، ومزامنة الفواتير مع ERPNext.</p>
+        </div>
+        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="proj-badge">تطبيق تجارة إلكترونية</div>
+          <h3>متجر إلكتروني وتوصيل طلبات</h3>
+          <p>تطبيق فلاتر مخصص للتسوق وعرض الأصناف وسلة المشتريات وتتبع الطلبات لحظياً مع ربط كامل مع Laravel REST API.</p>
+        </div>
+        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="proj-badge">نظام إداري وسطح مكتب</div>
+          <h3>نظام إدارة المشتريات والتقارير</h3>
+          <p>برنامج لويندوز والموبايل لإدارة فواتير المشتريات، كشوفات حساب الموردين والعملاء، وتصدير التقارير لملفات Excel و PDF.</p>
+        </div>
+        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
       </div>
     </div>
   </section>
 
   <!-- التذييل -->
   <footer>
-    <p>جميع الحقوق محفوظة &copy; 2026 | ريان محمد نعمان علي</p>
+    <p>جميع الحقوق محفوظة &copy; 2026 | <strong>ريان محمد نعمان علي</strong></p>
+    <p style="font-size: 0.85rem; margin-top: 8px;">مطور برمجيات وتطبيقات هواتف • صنعاء، اليمن</p>
   </footer>
 
-  <!-- كود التبديل الذكي بين الوضع الليلي والنهاري -->
+  <!-- جافاسكريبت لتبديل الوضع الليلي والنهاري بسلاسة -->
   <script>
-    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    const htmlElement = document.documentElement;
+    const html = document.documentElement;
 
-    // استرجاع الثيم المحفوظ أو استخدام الليلي كافتراضي
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateIcon(savedTheme);
+    // قراءة الثيم المحفوظ
+    const currentSavedTheme = localStorage.getItem('site_theme') || 'dark';
+    html.setAttribute('data-theme', currentSavedTheme);
+    refreshIcon(currentSavedTheme);
 
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const targetTheme = current === 'dark' ? 'light' : 'dark';
       
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
+      html.setAttribute('data-theme', targetTheme);
+      localStorage.setItem('site_theme', targetTheme);
+      refreshIcon(targetTheme);
     });
 
-    function updateIcon(theme) {
-      if (theme === 'dark') {
+    function refreshIcon(mode) {
+      if (mode === 'dark') {
         themeIcon.className = 'fa-solid fa-sun';
       } else {
         themeIcon.className = 'fa-solid fa-moon';
