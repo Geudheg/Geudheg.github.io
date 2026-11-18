@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
@@ -1143,6 +1143,7 @@
     let currentGalleryImages = [];
     let currentImageIndex = 0;
     let isGalleryLoading = false;
+    let isGalleryOpen = false;
 
     function openGallery(btn, folderName, title) {
         if (isGalleryLoading) return;
@@ -1193,6 +1194,11 @@
             }
 
             document.getElementById('galleryModal').style.display = 'flex';
+            isGalleryOpen = true;
+
+            try {
+                history.pushState({ galleryModalOpen: true }, '');
+            } catch (_) {}
 
             if (btn) {
                 btn.disabled = false;
@@ -1242,10 +1248,26 @@
     }
 
     function closeGallery() {
+        if (!isGalleryOpen && document.getElementById('galleryModal').style.display !== 'flex') return;
         document.getElementById('galleryModal').style.display = 'none';
+        isGalleryOpen = false;
+
+        if (history.state && history.state.galleryModalOpen) {
+            try {
+                history.back();
+            } catch (_) {}
+        }
     }
 
-    // إغلاق وبث الأسهم للوحة المفاتيح
+    // التقاط زر الرجوع بالجوال / المتصفح لإخفاء النافذة دون الخروج من الصفحة
+    window.addEventListener('popstate', (e) => {
+        if (isGalleryOpen || document.getElementById('galleryModal').style.display === 'flex') {
+            document.getElementById('galleryModal').style.display = 'none';
+            isGalleryOpen = false;
+        }
+    });
+
+    // إغلاق النافذة بزر ESC والتصفح بالأسهم
     document.addEventListener('keydown', (e) => {
         if (document.getElementById('galleryModal').style.display === 'flex') {
             if (e.key === 'Escape') closeGallery();
