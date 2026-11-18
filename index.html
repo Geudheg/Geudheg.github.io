@@ -460,8 +460,8 @@
           left: 0;
           width: 100vw;
           height: 100vh;
-          background: rgba(3, 7, 18, 0.92);
-          backdrop-filter: blur(12px);
+          background: rgba(3, 7, 18, 0.95);
+          backdrop-filter: blur(14px);
           z-index: 1000;
           justify-content: center;
           align-items: center;
@@ -472,9 +472,9 @@
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: 24px;
-          width: 90%;
-          max-width: 900px;
-          max-height: 90vh;
+          width: 92%;
+          max-width: 950px;
+          max-height: 92vh;
           display: flex;
           flex-direction: column;
           overflow: hidden;
@@ -516,18 +516,20 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 20px;
+          padding: 16px;
           flex: 1;
           background: #000000;
-          min-height: 380px;
+          min-height: 440px;
         }
 
         .main-gallery-img {
           max-width: 100%;
-          max-height: 60vh;
+          max-height: 70vh;
+          width: auto;
+          height: auto;
           object-fit: contain;
           border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.6);
           transition: transform 0.3s ease;
         }
 
@@ -612,7 +614,7 @@
           font-size: 0.95rem;
         }
 
-        /* الاستجابة للهواتف الذكية */
+        /* الاستجابة للهواتف الذكية والجوال */
         @media (max-width: 900px) {
           .hero-container {
             grid-template-columns: 1fr;
@@ -630,6 +632,33 @@
           .hero-text h1 {
             font-size: 2.3rem;
           }
+
+          /* تحسينات عرض معرض الصور على الشاشات الصغيرة والجوال */
+          .modal-overlay {
+            padding: 8px;
+          }
+          .modal-container {
+            width: 100%;
+            max-height: 95vh;
+            border-radius: 16px;
+          }
+          .modal-body {
+            padding: 10px 5px;
+            min-height: 70vh;
+          }
+          .main-gallery-img {
+            max-height: 74vh;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+          }
+          .nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+          }
+          .nav-btn.prev { right: 8px; }
+          .nav-btn.next { left: 8px; }
         }
     </style>
 </head>
@@ -787,18 +816,59 @@
         <!-- 1. تطبيق سَكِينَة (Sakinah) -->
         <div class="project-card">
             <div>
-                <div class="proj-badge">تطبيق إسلامي ذكي (Flutter & SQLite)</div>
-                <h3>تطبيق سَكِينَة (Sakinah)</h3>
-                <p>تطبيق إسلامي شامل للتحكّم التلقائي الذكي بوضع صامت للهاتف أثناء أوقات الصلوات مع عمل كامل 100% بدون إنترنت (Offline-First).</p>
+                <div class="proj-badge">تطبيق إسلامي ذكي (Flutter & SQLite & Native Android)</div>
+                <h3>تطبيق سَكِينَة (Sakinah) - المساعد الإسلامي والتحكم بوضع الصوت</h3>
+                <p>منظومة إسلامية ذكية وشاملة للتحكّم التلقائي بوضع صامت للهاتف أثناء أوقات الصلوات، إدارة المنبهات الأندرويد، المصحف، الأذكار، البوصلة، والرقية الشرعية مع عمل كامل 100% بدون إنترنت (Offline-First).</p>
                 <ul class="project-features">
-                    <li><i class="fa-solid fa-check"></i> تحكم تلقائي بنمط صامت للهاتف أثناء أوقات الصلاة.</li>
-                    <li><i class="fa-solid fa-check"></i> أذانات بـ 8 مؤذنين مع إشعار التنبيه المسبق بـ 5 دقائق.</li>
-                    <li><i class="fa-solid fa-check"></i> مصحف المدينة المنورة، الأذكار، البوصلة الشريفة للقبلة، والرقية الشرعية.</li>
-                    <li><i class="fa-solid fa-check"></i> السبحة الإلكترونية التفاعلية وحماية الإعدادات برمز PIN.</li>
+                    <li>
+                        <i class="fa-solid fa-volume-xmark"></i>
+                        <b>التحكم الذكي التلقائي بوضع الصوت (Smart Audio Ringer Control):</b>
+                        تحويل تلقائي للهاتف إلى الوضع الصامت أثناء أوقات الصلوات وفترات الخشوع مع استعادة وضع الصوت العادي تلقائياً بعد الصلاة، وتأمين التحكم بخلفية النظام عبر خدمات الأندرويد النظامية (Foreground Services & DND Access).
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bell"></i>
+                        <b>محرك المنبه النظامي والأذانات بأصوات 8 مؤذنين (Native Adhan & Alarm Engine):</b>
+                        تشغيل الأذانات الكاملة بصوت 8 من كبار المؤذنين (عبد الباسط، العفاسي، الحصري، المنشاوي، أذان مكة المكرمة، أذان المدينة المنورة، القطامي، وإسماعيل) مع إشعار تنبيهي للتأهب والاستعداد قبل الأذان بـ 5 دقائق وزر إيقاف الأذان المباشر.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-calculator"></i>
+                        <b>مواقيت الصلاة الفلكية والتقاويم الرسمية (Astronomical Calculations & Waqf API):</b>
+                        دعم خيارين لتحديد المواقيت: (حسب تقويم الدولة والمدينة من API وزارة الأوقاف الرسمي) أو (حسب الحسابات الفلكية للموقع أوفلاين)، مع تحديد تلقائي لمعايير الحساب (أم القرى، الهيئة المصرية، دبي، كراتشي، ISNA، والمجلس الإسلامي) وفق رمز البلد.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-book-quran"></i>
+                        <b>مصحف المدينة المنورة الرقمي التفاعلي (Madinah Mushaf Quran Reader):</b>
+                        عرض نصي وفهرسي كامل لصفحات مصحف المدينة المنورة الـ 604 مع تحديد الأجزاء والسور، وإبقاء الشاشة مضاءة أثناء القراءة، واختيار القارئ الافتراضي للتلاوات.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-hands-praying"></i>
+                        <b>أذكار الصباح والمساء والرقية الشرعية المطهرة (Authentic Adhkar & Ruqyah):</b>
+                        أذكار الصباح والمساء المأثورة مع شريط إنجاز تفاعلي وإخفاء الذكر المكتمل تلقائياً، وقسم الرقية الشرعية المطهرة الشامل (خطوات الرقية الـ 6، آيات الشفاء وإبطال السحر، وأدعية السنة النبوية مع النسخ المباشر).
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-fingerprint"></i>
+                        <b>السبحة الإلكترونية التفاعلية والمحرك الحسي (Smart Misbaha with Native Haptics):</b>
+                        سبحة إلكترونية متطورة بـ 8 أذكار مأثورة وإضافة أذكار مخصصة، مع تفعيل الاهتزاز الحسي الميكانيكي للهاتف عبر خدمات Android Native Vibrator مع كل تسبيحة، وسجل إحصائي شامل لتسابيح اليوم والإجمالي الكلي.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-compass"></i>
+                        <b>بوصلة القبلة الشريفة الحية (Real-Time Interactive 3D Qibla Compass):</b>
+                        بوصلة كروية ثلاثية الأبعاد تفاعلية تدور 60FPS مع مستشعر الجهاز المغناطيسي والسحب باللمس، لحساب زاوية القبلة والمسافة بالكيلومترات إلى الكعبة المشرفة لجميع مدن العالم، مع نبضة اهتزاز وتغير اللون إلى الزمردي عند المواجهة المباشرة للكعبة.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-lock"></i>
+                        <b>الحماية والأمان برمز PIN والتأمين الحيوي (PIN & Biometric Lock):</b>
+                        قفل التطبيق والإعدادات برمز سري PIN مكون من 4 أرقام لمنع الأطفال أو المتطفلين من إيقاف الجدولة وتغيير الإعدادات.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-layer-group"></i>
+                        <b>معمارية برمجية منظمة وعمل 100% أوفلاين (Clean Architecture & Offline-First):</b>
+                        بناء ومعمارية نظيفة باستخدام Flutter & GetX State Management، وقواعد بيانات محليّة SQLite مع إدارة التلقائية للجداول والعمل التام بدون الحاجة لاتصال بالإنترنت.
+                    </li>
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('سكينة', 'تطبيق سَكِينَة (Sakinah)')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'سكينة', 'تطبيق سَكِينَة (Sakinah)')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -808,7 +878,7 @@
         <!-- 2. نظام محاسبي ومخزني ERP متكامل -->
         <div class="project-card">
             <div>
-                <div class="proj-badge">نظام محاسبي ومخزني ERP متكامل (Flutter & SQLite)</div>
+                <div class="proj-badge">نظام محاسبي ومخزني   متكامل (Flutter & SQLite)</div>
                 <h3>تطبيق الحسابات والأنظمة المالية</h3>
                 <p>نظام إداري ومحاسبي شامل لإدارة الديون، المخازن، الشركات، الحسابات والباركود مع عمل كامل 100% بدون إنترنت (Offline-First).</p>
                 <ul class="project-features">
@@ -821,7 +891,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('تطبيق_الحسابات', 'تطبيق الحسابات والأنظمة المالية')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'تطبيق_الحسابات', 'تطبيق الحسابات والأنظمة المالية')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -843,7 +913,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('دفتر_الديون', 'تطبيق دفتر الديون والحسابات (Notes Ledger)')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'دفتر_الديون', 'تطبيق دفتر الديون والحسابات (Notes Ledger)')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -864,7 +934,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('جدار_الحماية', 'تطبيق Net Blocker')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'جدار_الحماية', 'تطبيق Net Blocker')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -886,7 +956,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('نظام_ERPNext', 'نظام ERPNext & Frappe للمؤسسات')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'نظام_ERPNext', 'نظام ERPNext & Frappe للمؤسسات')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -951,7 +1021,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('الجمعيات_المائية', 'نظام إدارة المشاريع والجمعيات المائية')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'الجمعيات_المائية', 'نظام إدارة المشاريع والجمعيات المائية')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -974,7 +1044,7 @@
                 </ul>
             </div>
             <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button class="btn-act gallery" onclick="openGallery('تطبيق_سر', 'تطبيق حماية وإخفاء البيانات (سِرّ)')">
+                <button class="btn-act gallery" onclick="openGallery(this, 'تطبيق_سر', 'تطبيق حماية وإخفاء البيانات (سِرّ)')">
                     <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
                 </button>
                 <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
@@ -1042,8 +1112,20 @@
     // ==========================================
     let currentGalleryImages = [];
     let currentImageIndex = 0;
+    let isGalleryLoading = false;
 
-    function openGallery(folderName, title) {
+    function openGallery(btn, folderName, title) {
+        if (isGalleryLoading) return;
+        isGalleryLoading = true;
+
+        let originalBtnText = '';
+        if (btn) {
+            originalBtnText = btn.innerHTML;
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري فتح المعرض...';
+        }
+
         document.getElementById('modalProjectTitle').innerText = title;
         document.getElementById('modalImageCounter').innerText = "جاري فحص وتحميل الصور...";
         document.getElementById('modalMainImage').src = "";
@@ -1081,6 +1163,20 @@
             }
 
             document.getElementById('galleryModal').style.display = 'flex';
+
+            if (btn) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.innerHTML = originalBtnText;
+            }
+            isGalleryLoading = false;
+        }).catch(() => {
+            if (btn) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.innerHTML = originalBtnText;
+            }
+            isGalleryLoading = false;
         });
     }
 
