@@ -1,642 +1,1016 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ريان محمد نعمان علي | مطور تطبيقات ومبرمج أنظمة</title>
-  
-  <!-- خطوط وأيقونات حديثة -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ريان محمد نعمان علي | مطور تطبيقات ومكامل أنظمة ERPNext</title>
 
-  <style>
-    /* ألوان الوضع الليلي (Ultra Dark & Cyan/Emerald) */
-    :root[data-theme="dark"] {
-      --bg: #030712;
-      --surface: #0f172a;
-      --surface-card: #1e293b;
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --text-dim: #94a3b8;
-      --accent: #10b981;
-      --accent-cyan: #06b6d4;
-      --accent-glow: rgba(16, 185, 129, 0.2);
-      --term-bg: #090d16;
-      --nav-bg: rgba(3, 7, 18, 0.85);
-    }
+    <!-- خطوط وأيقونات حديثة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* ألوان الوضع النهاري (Clean White & Slate) */
-    :root[data-theme="light"] {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --surface-card: #f1f5f9;
-      --border: rgba(0, 0, 0, 0.08);
-      --text: #0f172a;
-      --text-dim: #64748b;
-      --accent: #059669;
-      --accent-cyan: #0284c7;
-      --accent-glow: rgba(5, 150, 105, 0.15);
-      --term-bg: #1e293b;
-      --nav-bg: rgba(255, 255, 255, 0.85);
-    }
+    <style>
+        /* ألوان الوضع الليلي (Ultra Dark & Cyan/Emerald) */
+        :root[data-theme="dark"] {
+          --bg: #030712;
+          --surface: #0f172a;
+          --surface-card: #1e293b;
+          --border: rgba(255, 255, 255, 0.08);
+          --text: #f8fafc;
+          --text-dim: #94a3b8;
+          --accent: #10b981;
+          --accent-cyan: #06b6d4;
+          --accent-glow: rgba(16, 185, 129, 0.2);
+          --term-bg: #090d16;
+          --nav-bg: rgba(3, 7, 18, 0.85);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Tajawal', sans-serif;
-      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
-    }
+        /* ألوان الوضع النهاري (Clean White & Slate) */
+        :root[data-theme="light"] {
+          --bg: #f8fafc;
+          --surface: #ffffff;
+          --surface-card: #f1f5f9;
+          --border: rgba(0, 0, 0, 0.08);
+          --text: #0f172a;
+          --text-dim: #64748b;
+          --accent: #059669;
+          --accent-cyan: #0284c7;
+          --accent-glow: rgba(5, 150, 105, 0.15);
+          --term-bg: #1e293b;
+          --nav-bg: rgba(255, 255, 255, 0.85);
+        }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Tajawal', sans-serif;
+          transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+        }
 
-    /* شريط التنقل المتطور */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: var(--nav-bg);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        body {
+          background-color: var(--bg);
+          color: var(--text);
+          overflow-x: hidden;
+          line-height: 1.6;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      font-size: 1.25rem;
-      letter-spacing: -0.5px;
-    }
+        /* شريط التنقل المتطور */
+        nav {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          backdrop-filter: blur(16px);
+          background: var(--nav-bg);
+          border-bottom: 1px solid var(--border);
+          padding: 1rem 8%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-    .avatar-glow {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.2rem;
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
+        .brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: 900;
+          font-size: 1.25rem;
+          letter-spacing: -0.5px;
+        }
 
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .avatar-glow {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-size: 1.2rem;
+          box-shadow: 0 0 15px var(--accent-glow);
+        }
 
-    .theme-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      transition: 0.3s;
-    }
+        .nav-buttons {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
 
-    .theme-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: scale(1.05);
-    }
+        .theme-btn {
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          border: 1px solid var(--border);
+          background: var(--surface);
+          color: var(--text);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          transition: 0.3s;
+        }
 
-    /* قسم الترحيب (Hero Section) بنمط شبكة شطرنجية */
-    .hero-container {
-      padding: 4rem 8% 2rem;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      min-height: 80vh;
-    }
+        .theme-btn:hover {
+          border-color: var(--accent);
+          color: var(--accent);
+          transform: scale(1.05);
+        }
 
-    .pill-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 30px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
+        /* قسم الترحيب (Hero Section) */
+        .hero-container {
+          padding: 4rem 8% 2rem;
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 3rem;
+          align-items: center;
+          min-height: 80vh;
+        }
 
-    .pulsing-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-      animation: pulse 2s infinite;
-    }
+        .pill-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 16px;
+          border-radius: 30px;
+          background: rgba(16, 185, 129, 0.1);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+          color: var(--accent);
+          font-size: 0.88rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
-    }
+        .pulsing-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--accent);
+          box-shadow: 0 0 10px var(--accent);
+          animation: pulse 2s infinite;
+        }
 
-    .hero-text h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 0.8rem;
-    }
+        @keyframes pulse {
+          0% { transform: scale(0.95); opacity: 0.8; }
+          50% { transform: scale(1.3); opacity: 1; }
+          100% { transform: scale(0.95); opacity: 0.8; }
+        }
 
-    .hero-text h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .hero-text h1 {
+          font-size: 3rem;
+          font-weight: 900;
+          line-height: 1.2;
+          margin-bottom: 0.8rem;
+        }
 
-    .role-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      margin-bottom: 1.2rem;
-    }
+        .hero-text h1 span {
+          background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
 
-    .bio-text {
-      font-size: 1.1rem;
-      color: var(--text-dim);
-      margin-bottom: 2rem;
-      max-width: 580px;
-    }
+        .role-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: var(--accent-cyan);
+          margin-bottom: 1.2rem;
+        }
 
-    /* نافذة الكود التفاعلية بالجانب */
-    .terminal-window {
-      background: var(--term-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      overflow: hidden;
-      direction: ltr;
-      text-align: left;
-    }
+        .bio-text {
+          font-size: 1.1rem;
+          color: var(--text-dim);
+          margin-bottom: 2rem;
+          max-width: 620px;
+          line-height: 1.8;
+        }
 
-    .terminal-header {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
+        /* نافذة الكود التفاعلية بالجانب */
+        .terminal-window {
+          background: var(--term-bg);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+          overflow: hidden;
+          direction: ltr;
+          text-align: left;
+        }
 
-    .circle { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-    .c-red { background: #ef4444; }
-    .c-yellow { background: #f59e0b; }
-    .c-green { background: #10b981; }
-    .term-title { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #94a3b8; margin-left: 10px; }
+        .terminal-header {
+          background: rgba(255, 255, 255, 0.04);
+          padding: 12px 18px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-bottom: 1px solid var(--border);
+        }
 
-    .terminal-body {
-      padding: 20px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      color: #e2e8f0;
-      line-height: 1.7;
-    }
+        .circle { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .c-red { background: #ef4444; }
+        .c-yellow { background: #f59e0b; }
+        .c-green { background: #10b981; }
+        .term-title { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #94a3b8; margin-left: 10px; }
 
-    .kw { color: #f43f5e; font-weight: bold; }
-    .fn { color: #38bdf8; }
-    .str { color: #34d399; }
-    .num { color: #fbbf24; }
-    .cm { color: #64748b; font-style: italic; }
+        .terminal-body {
+          padding: 20px;
+          font-family: 'Fira Code', monospace;
+          font-size: 0.9rem;
+          color: #e2e8f0;
+          line-height: 1.7;
+        }
 
-    /* Bento Grid: شبكة المعلومات السريعة */
-    .section-bento {
-      padding: 3rem 8%;
-    }
+        .kw { color: #f43f5e; font-weight: bold; }
+        .fn { color: #38bdf8; }
+        .str { color: #34d399; }
+        .num { color: #fbbf24; }
 
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
+        /* Bento Grid: شبكة المعلومات السريعة */
+        .section-bento {
+          padding: 3rem 8%;
+        }
 
-    .bento-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
+        .bento-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
 
-    .bento-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
+        .bento-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 22px;
+          padding: 2rem;
+          position: relative;
+          overflow: hidden;
+        }
 
-    .bento-card.col-2 { grid-column: span 2; }
+        .bento-card:hover {
+          border-color: var(--accent);
+          transform: translateY(-4px);
+        }
 
-    .card-icon {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
+        .bento-card.col-2 { grid-column: span 2; }
 
-    .bento-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
+        .card-icon {
+          font-size: 2rem;
+          color: var(--accent);
+          margin-bottom: 1rem;
+        }
 
-    .bento-card p {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-    }
+        .bento-card h3 {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+        }
 
-    /* بطاقات أرقام الهواتف والتواصل المباشر */
-    .contact-phone-boxes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.2rem;
-    }
+        .bento-card p {
+          color: var(--text-dim);
+          font-size: 0.95rem;
+        }
 
-    .phone-pill-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      padding: 1.2rem;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-    }
+        /* بطاقات أرقام الهواتف والتواصل المباشر */
+        .contact-phone-boxes {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-top: 1.2rem;
+        }
 
-    .phone-pill-card .phone-title {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .phone-pill-card {
+          background: var(--surface-card);
+          border: 1px solid var(--border);
+          padding: 1.2rem;
+          border-radius: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          text-decoration: none;
+          color: var(--text);
+        }
 
-    .phone-pill-card .phone-number {
-      font-family: 'Fira Code', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      direction: ltr;
-      text-align: right;
-      color: var(--text);
-    }
+        .phone-pill-card .phone-title {
+          font-size: 0.85rem;
+          color: var(--text-dim);
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
 
-    .phone-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 4px;
-    }
+        .phone-pill-card .phone-number {
+          font-family: 'Fira Code', sans-serif;
+          font-size: 1.15rem;
+          font-weight: 700;
+          direction: ltr;
+          text-align: right;
+          color: var(--text);
+        }
 
-    .btn-act {
-      flex: 1;
-      padding: 7px;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
+        .phone-actions {
+          display: flex;
+          gap: 8px;
+          margin-top: 4px;
+        }
 
-    .btn-act.wa {
-      background: rgba(37, 211, 102, 0.15);
-      color: #25D366;
-      border: 1px solid rgba(37, 211, 102, 0.3);
-    }
+        .btn-act {
+          flex: 1;
+          padding: 8px 12px;
+          border-radius: 8px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          cursor: pointer;
+          border: none;
+        }
 
-    .btn-act.call {
-      background: rgba(6, 182, 212, 0.15);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(6, 182, 212, 0.3);
-    }
+        .btn-act.wa {
+          background: rgba(37, 211, 102, 0.15);
+          color: #25D366;
+          border: 1px solid rgba(37, 211, 102, 0.3);
+        }
 
-    .btn-act:hover {
-      filter: brightness(1.15);
-    }
+        .btn-act.call {
+          background: rgba(6, 182, 212, 0.15);
+          color: var(--accent-cyan);
+          border: 1px solid rgba(6, 182, 212, 0.3);
+        }
 
-    /* المهارات كشارات (Tags) عصرية */
-    .skills-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
-    }
+        .btn-act.gallery {
+          background: rgba(16, 185, 129, 0.15);
+          color: var(--accent);
+          border: 1px solid rgba(16, 185, 129, 0.35);
+          margin-top: 10px;
+        }
 
-    .skill-pill {
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .btn-act:hover {
+          filter: brightness(1.15);
+        }
 
-    .skill-pill i {
-      color: var(--accent);
-    }
+        /* المهارات كشارات (Tags) عصرية */
+        .skills-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 1rem;
+        }
 
-    /* قسم المشاريع */
-    .projects-container {
-      padding: 3rem 8%;
-    }
+        .skill-pill {
+          background: var(--surface-card);
+          border: 1px solid var(--border);
+          padding: 8px 14px;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
 
-    .section-head {
-      margin-bottom: 2rem;
-    }
+        .skill-pill i {
+          color: var(--accent);
+        }
 
-    .section-head h2 {
-      font-size: 2rem;
-      font-weight: 800;
-    }
+        /* قسم المشاريع */
+        .projects-container {
+          padding: 3rem 8%;
+        }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
+        .section-head {
+          margin-bottom: 2rem;
+        }
 
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        .section-head h2 {
+          font-size: 2rem;
+          font-weight: 800;
+        }
 
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 1.5rem;
+        }
 
-    .proj-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: rgba(6, 182, 212, 0.1);
-      color: var(--accent-cyan);
-      padding: 4px 10px;
-      border-radius: 8px;
-      width: fit-content;
-      margin-bottom: 1rem;
-    }
+        .project-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 1.8rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
 
-    .project-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-    }
+        .project-card:hover {
+          border-color: var(--accent);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-    .project-card p {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
+        .proj-badge {
+          font-size: 0.75rem;
+          font-weight: 700;
+          background: rgba(6, 182, 212, 0.1);
+          color: var(--accent-cyan);
+          padding: 4px 10px;
+          border-radius: 8px;
+          width: fit-content;
+          margin-bottom: 1rem;
+        }
 
-    /* التذييل */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 8%;
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 0.95rem;
-    }
+        .project-card h3 {
+          font-size: 1.35rem;
+          margin-bottom: 0.6rem;
+        }
 
-    /* الاستجابة للهواتف الذكية */
-    @media (max-width: 900px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        padding-top: 2rem;
-      }
-      .bento-grid {
-        grid-template-columns: 1fr;
-      }
-      .bento-card.col-2 {
-        grid-column: span 1;
-      }
-      .contact-phone-boxes {
-        grid-template-columns: 1fr;
-      }
-      .hero-text h1 {
-        font-size: 2.3rem;
-      }
-    }
-  </style>
+        .project-card p {
+          color: var(--text-dim);
+          font-size: 0.95rem;
+          margin-bottom: 1.2rem;
+          line-height: 1.6;
+        }
+
+        .project-features {
+          list-style: none;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+          font-size: 0.88rem;
+          color: var(--text-dim);
+          margin-bottom: 6px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .project-features li i {
+          color: var(--accent);
+          font-size: 0.8rem;
+        }
+
+        /* نافذة العرض الضوئية للصور (Lightbox Gallery Modal) */
+        .modal-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(3, 7, 18, 0.92);
+          backdrop-filter: blur(12px);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+
+        .modal-container {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 24px;
+          width: 90%;
+          max-width: 900px;
+          max-height: 90vh;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+          padding: 16px 24px;
+          background: var(--surface-card);
+          border-bottom: 1px solid var(--border);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .modal-title {
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: var(--text);
+        }
+
+        .btn-close {
+          background: rgba(239, 68, 68, 0.15);
+          color: #ef4444;
+          border: 1px solid rgba(239, 68, 68, 0.3);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .modal-body {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          flex: 1;
+          background: #000000;
+          min-height: 380px;
+        }
+
+        .main-gallery-img {
+          max-width: 100%;
+          max-height: 60vh;
+          object-fit: contain;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          transition: transform 0.3s ease;
+        }
+
+        .nav-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(15, 23, 42, 0.85);
+          color: #fff;
+          border: 1px solid var(--border);
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          transition: 0.2s;
+        }
+
+        .nav-btn:hover {
+          background: var(--accent);
+          color: #fff;
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-btn.prev { right: 20px; }
+        .nav-btn.next { left: 20px; }
+
+        .modal-footer {
+          padding: 14px 20px;
+          background: var(--surface-card);
+          border-top: 1px solid var(--border);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .img-counter {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--accent);
+          background: rgba(16, 185, 129, 0.1);
+          padding: 4px 12px;
+          border-radius: 20px;
+        }
+
+        .thumbnails-row {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          max-width: 100%;
+          padding: 6px 0;
+        }
+
+        .gallery-thumb {
+          width: 55px;
+          height: 55px;
+          object-fit: cover;
+          border-radius: 8px;
+          cursor: pointer;
+          border: 2px solid transparent;
+          opacity: 0.6;
+          transition: 0.2s;
+        }
+
+        .gallery-thumb.active {
+          border-color: var(--accent);
+          opacity: 1;
+          transform: scale(1.05);
+        }
+
+        /* التذييل */
+        footer {
+          border-top: 1px solid var(--border);
+          padding: 2.5rem 8%;
+          text-align: center;
+          color: var(--text-dim);
+          font-size: 0.95rem;
+        }
+
+        /* الاستجابة للهواتف الذكية */
+        @media (max-width: 900px) {
+          .hero-container {
+            grid-template-columns: 1fr;
+            padding-top: 2rem;
+          }
+          .bento-grid {
+            grid-template-columns: 1fr;
+          }
+          .bento-card.col-2 {
+            grid-column: span 1;
+          }
+          .contact-phone-boxes {
+            grid-template-columns: 1fr;
+          }
+          .hero-text h1 {
+            font-size: 2.3rem;
+          }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- شريط التنقل العلوي -->
-  <nav>
+<!-- شريط التنقل العلوي -->
+<nav>
     <div class="brand">
-      <div class="avatar-glow"><i class="fa-solid fa-code"></i></div>
-      <span>ريان علي</span>
+        <div class="avatar-glow"><i class="fa-solid fa-code"></i></div>
+        <span>ريان علي</span>
     </div>
-    
+
     <div class="nav-buttons">
-      <!-- زر التبديل الليلي والنهاري -->
-      <button class="theme-btn" id="themeToggle" title="تبديل الثيم">
-        <i class="fa-solid fa-sun" id="themeIcon"></i>
-      </button>
+        <!-- زر التبديل الليلي والنهاري -->
+        <button class="theme-btn" id="themeToggle" title="تبديل الثيم">
+            <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
 
-      <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 8px 16px; border-radius: 50px;">
-        <i class="fa-brands fa-whatsapp"></i> واتساب
-      </a>
+        <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 8px 16px; border-radius: 50px;">
+            <i class="fa-brands fa-whatsapp"></i> واتساب
+        </a>
     </div>
-  </nav>
+</nav>
 
-  <!-- الواجهة الترحيبية الحديثة -->
-  <main class="hero-container">
+<!-- الواجهة الترحيبية الحديثة -->
+<main class="hero-container">
     <div class="hero-text">
-      <div class="pill-status">
-        <span class="pulsing-dot"></span> متاح لتنفيذ المشاريع البرمجية
-      </div>
-      <h1>أنا <span>ريان محمد نعمان علي</span></h1>
-      <div class="role-title">مهندس برمجيات • مطور Flutter ومكامل أنظمة ERPNext</div>
-      <p class="bio-text">
-        عمري <strong>25 سنة</strong>، مقيم في <strong>صنعاء، اليمن</strong>. أمتلك خبرة عملية في تطوير تطبيقات الموبايل والديسكتوب باستخدام <strong>Flutter</strong>، مع بناء وربط واجهات الـ <strong>REST APIs</strong> المتقدمة وقواعد البيانات، وتخصيص أنظمة المبيعات والمخازن <strong>ERPNext & Frappe</strong>.
-      </p>
+        <div class="pill-status">
+            <span class="pulsing-dot"></span> متاح لتنفيذ المشاريع البرمجية
+        </div>
+        <h1>أنا <span>ريان محمد نعمان علي</span></h1>
+        <div class="role-title">مهندس برمجيات • مطور تطبيقات (جوال • سطح مكتب • ويب) • ومكامل أنظمة ERPNext</div>
+        <p class="bio-text">
+            عمري <strong>25 سنة</strong>، مقيم في <strong>صنعاء، اليمن</strong>. أمتلك خبرة عملية في تطوير تطبيقات الموبايل والأيفون وأجهزة سطح المكتب والويب باستخدام <strong>Flutter & Dart</strong>، مع بناء وربط واجهات الـ <strong>REST APIs</strong> المتقدمة بـ Laravel وقواعد البيانات، وتخصيص أنظمة إدارة المؤسسات والمبيعات والمخازن <strong>ERPNext & Frappe</strong> (النظام الإداري المتطور الشبيه بـ Odoo).
+        </p>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
-          <i class="fa-brands fa-whatsapp"></i> تواصل عبر 772851873
-        </a>
-        <a href="https://github.com/Geudheg" class="btn-act" target="_blank" style="background: var(--surface-card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
-          <i class="fa-brands fa-github"></i> معرض GitHub
-        </a>
-      </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank" style="padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
+                <i class="fa-brands fa-whatsapp"></i> تواصل عبر 772851873
+            </a>
+            <a href="https://github.com/Geudheg" class="btn-act" target="_blank" style="background: var(--surface-card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 12px; font-size: 1rem;">
+                <i class="fa-brands fa-github"></i> معرض GitHub
+            </a>
+        </div>
     </div>
 
     <!-- بطاقة الكود التفاعلي في الجانب -->
     <div class="terminal-window">
-      <div class="terminal-header">
-        <span class="circle c-red"></span>
-        <span class="circle c-yellow"></span>
-        <span class="circle c-green"></span>
-        <span class="term-title">developer_profile.dart</span>
-      </div>
-      <div class="terminal-body">
-        <span class="kw">class</span> <span class="fn">RayanAli</span> {<br>
-        &nbsp;&nbsp;<span class="kw">final</span> String name = <span class="str">"ريان محمد نعمان علي"</span>;<br>
-        &nbsp;&nbsp;<span class="kw">final</span> int age = <span class="num">25</span>;<br>
-        &nbsp;&nbsp;<span class="kw">final</span> String city = <span class="str">"صنعاء - اليمن"</span>;<br>
-        &nbsp;&nbsp;<span class="kw">final</span> List&lt;String&gt; primaryStack = [<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Flutter & Dart'</span>,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'BLoC & Riverpod'</span>,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'ERPNext / Frappe'</span>,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Laravel REST APIs'</span>,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Hive (Offline First)'</span><br>
-        &nbsp;&nbsp;];<br><br>
-        &nbsp;&nbsp;<span class="fn">bool</span> <span class="fn">isAvailableForHire</span>() =&gt; <span class="kw">true</span>;<br>
-        }
-      </div>
+        <div class="terminal-header">
+            <span class="circle c-red"></span>
+            <span class="circle c-yellow"></span>
+            <span class="circle c-green"></span>
+            <span class="term-title">developer_profile.dart</span>
+        </div>
+        <div class="terminal-body">
+            <span class="kw">class</span> <span class="fn">RayanAli</span> {<br>
+            &nbsp;&nbsp;<span class="kw">final</span> String name = <span class="str">"ريان محمد نعمان علي"</span>;<br>
+            &nbsp;&nbsp;<span class="kw">final</span> int age = <span class="num">25</span>;<br>
+            &nbsp;&nbsp;<span class="kw">final</span> String city = <span class="str">"صنعاء - اليمن"</span>;<br><br>
+            &nbsp;&nbsp;<span class="kw">final</span> List&lt;String&gt; targetPlatforms = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Android & iOS (Mobile)'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Windows (Desktop App)'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Web Applications'</span><br>
+            &nbsp;&nbsp;];<br><br>
+            &nbsp;&nbsp;<span class="kw">final</span> List&lt;String&gt; coreTechnologies = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Flutter & Dart'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'ERPNext / Frappe (Odoo Alternative)'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Laravel REST APIs'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'SQLite & MySQL & Hive (Offline-First)'</span><br>
+            &nbsp;&nbsp;];<br><br>
+            &nbsp;&nbsp;<span class="fn">bool</span> <span class="fn">isAvailableForHire</span>() =&gt; <span class="kw">true</span>;<br>
+            }
+        </div>
     </div>
-  </main>
+</main>
 
-  <!-- شبكة المعلومات السريعة والأرقام (Bento Grid) -->
-  <section class="section-bento">
+<!-- شبكة المعلومات السريعة والأرقام (Bento Grid) -->
+<section class="section-bento">
     <div class="bento-grid">
-      
-      <!-- بطاقة الأرقام ووسائل الاتصال المباشر -->
-      <div class="bento-card col-2">
-        <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
-        <h3>تواصل مباشر معي</h3>
-        <p>يمكنك الاتصال المباشر أو المحادثة الفورية عبر واتساب على أي من الرقمين التاليين:</p>
-        
-        <div class="contact-phone-boxes">
-          <!-- الرقم الأول: 772851873 -->
-          <div class="phone-pill-card">
-            <div class="phone-title"><i class="fa-solid fa-phone"></i> الخط الأول (يمن موبايل / واتساب)</div>
-            <div class="phone-number">+967 772 851 873</div>
-            <div class="phone-actions">
-              <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
-              <a href="tel:+967772851873" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+
+        <!-- بطاقة الأرقام ووسائل الاتصال المباشر -->
+        <div class="bento-card col-2">
+            <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>تواصل مباشر معي</h3>
+            <p>يمكنك الاتصال المباشر أو المحادثة الفورية عبر واتساب على أي من الرقمين التاليين:</p>
+
+            <div class="contact-phone-boxes">
+                <!-- الرقم الأول: 772851873 -->
+                <div class="phone-pill-card">
+                    <div class="phone-title"><i class="fa-solid fa-phone"></i> الخط الأول (يمن موبايل / واتساب)</div>
+                    <div class="phone-number">+967 772 851 873</div>
+                    <div class="phone-actions">
+                        <a href="https://wa.me/967772851873" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+                        <a href="tel:+967772851873" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+                    </div>
+                </div>
+
+                <!-- الرقم الثاني: 715078374 -->
+                <div class="phone-pill-card">
+                    <div class="phone-title"><i class="fa-solid fa-mobile-screen"></i> الخط الثاني (سبأفون / واتساب)</div>
+                    <div class="phone-number">+967 715 078 374</div>
+                    <div class="phone-actions">
+                        <a href="https://wa.me/967715078374" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+                        <a href="tel:+967715078374" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
 
-          <!-- الرقم الثاني: 715078374 -->
-          <div class="phone-pill-card">
-            <div class="phone-title"><i class="fa-solid fa-mobile-screen"></i> الخط الثاني (سبأفون / واتساب)</div>
-            <div class="phone-number">+967 715 078 374</div>
-            <div class="phone-actions">
-              <a href="https://wa.me/967715078374" class="btn-act wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
-              <a href="tel:+967715078374" class="btn-act call"><i class="fa-solid fa-phone"></i> اتصال</a>
+        <!-- بطاقة نبذة سريعة -->
+        <div class="bento-card">
+            <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
+            <h3>بطاقة التعريف</h3>
+            <p style="margin-bottom: 12px;"><strong>الاسم:</strong> ريان محمد نعمان علي</p>
+            <p style="margin-bottom: 12px;"><strong>العمر:</strong> 25 عاماً</p>
+            <p style="margin-bottom: 12px;"><strong>الموقع:</strong> اليمن - صنعاء</p>
+            <p><strong>نوع العمل:</strong> عن بُعد (Remote) أو مكتبي</p>
+        </div>
+
+        <!-- بطاقة المهارات والترسانة التقنية -->
+        <div class="bento-card col-2">
+            <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h3>الترسانة التقنية والبيئات (Tech Stack)</h3>
+            <p>الأدوات والتقنيات التي أعتمد عليها في بناء تطبيقات وأنظمة متكاملة عابرة للمنصات:</p>
+            <div class="skills-pills">
+                <span class="skill-pill"><i class="fa-brands fa-flutter"></i> Flutter (Mobile, iOS, Desktop, Web)</span>
+                <span class="skill-pill"><i class="fa-solid fa-code"></i> Dart</span>
+                <span class="skill-pill"><i class="fa-solid fa-server"></i> ERPNext & Frappe (Odoo Alternative)</span>
+                <span class="skill-pill"><i class="fa-brands fa-laravel"></i> Laravel REST APIs</span>
+                <span class="skill-pill"><i class="fa-solid fa-database"></i> SQLite & MySQL & Hive</span>
+                <span class="skill-pill"><i class="fa-solid fa-wifi"></i> Offline-First Systems</span>
+                <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase Services</span>
+                <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
             </div>
-          </div>
         </div>
-      </div>
 
-      <!-- بطاقة نبذة سريعة -->
-      <div class="bento-card">
-        <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
-        <h3>بطاقة التعريف</h3>
-        <p style="margin-bottom: 12px;"><strong>الاسم:</strong> ريان محمد نعمان علي</p>
-        <p style="margin-bottom: 12px;"><strong>العمر:</strong> 25 عاماً</p>
-        <p style="margin-bottom: 12px;"><strong>الموقع:</strong> اليمن - صنعاء</p>
-        <p><strong>نوع العمل:</strong> عن بُعد (Remote) أو مكتبي</p>
-      </div>
-
-      <!-- بطاقة المهارات والترسانة التقنية -->
-      <div class="bento-card col-2">
-        <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
-        <h3>الترسانة التقنية (Tech Stack)</h3>
-        <p>الأدوات والتقنيات التي أعتمد عليها في بناء مشاريع مستقرة وعالية الأداء:</p>
-        <div class="skills-pills">
-          <span class="skill-pill"><i class="fa-brands fa-flutter"></i> Flutter Mobile & Desktop</span>
-          <span class="skill-pill"><i class="fa-solid fa-code"></i> Dart</span>
-          <span class="skill-pill"><i class="fa-solid fa-diagram-project"></i> BLoC & Riverpod</span>
-          <span class="skill-pill"><i class="fa-solid fa-server"></i> ERPNext & Frappe</span>
-          <span class="skill-pill"><i class="fa-brands fa-laravel"></i> Laravel APIs</span>
-          <span class="skill-pill"><i class="fa-solid fa-database"></i> Hive (Offline Storage)</span>
-          <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase</span>
-          <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+        <!-- بطاقة الثقة والجودة -->
+        <div class="bento-card">
+            <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>الجودة والالتزام</h3>
+            <p>كود نظيف ومعماري (Clean Code)، التزام دقيق بالمواعيد المحددة، ودعم فني مستمر بعد تسليم المشروع.</p>
         </div>
-      </div>
-
-      <!-- بطاقة الثقة والجودة -->
-      <div class="bento-card">
-        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>الجودة والالتزام</h3>
-        <p>كود نظيف وواضح (Clean Code)، التزام دقيق بالمواعيد المحددة، ودعم فني مستمر بعد تسليم المشروع.</p>
-      </div>
 
     </div>
-  </section>
+</section>
 
-  <!-- قسم المشاريع المميزة -->
-  <section class="projects-container">
+<!-- قسم المشاريع المميزة -->
+<section class="projects-container">
     <div class="section-head">
-      <h2>نماذج من المشاريع</h2>
-      <p style="color: var(--text-dim);">أمثلة واقعية لأنظمة وتطبيقات قمت بتطويرها</p>
+        <h2>نماذج من المشاريع والأنظمة</h2>
+        <p style="color: var(--text-dim);">أمثلة واقعية لأنظمة وتطبيقات متكاملة قمت بتطويرها</p>
     </div>
 
     <div class="projects-grid">
-      <div class="project-card">
-        <div>
-          <div class="proj-badge">نظام نقاط بيع وكاشير</div>
-          <h3>تطبيق POS ذكي يدعم الأوفلاين</h3>
-          <p>تطبيق كاشير متكامل يدعم الباركود المتعدد للوحدات، البيع السريع بدون إنترنت مع التخزين في Hive، ومزامنة الفواتير مع ERPNext.</p>
+        <!-- 1. تطبيق سَكِينَة (Sakinah) -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">تطبيق إسلامي ذكي (Flutter & SQLite)</div>
+                <h3>تطبيق سَكِينَة (Sakinah)</h3>
+                <p>تطبيق إسلامي شامل للتحكّم التلقائي الذكي بوضع صامت للهاتف أثناء أوقات الصلوات مع عمل كامل 100% بدون إنترنت (Offline-First).</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> تحكم تلقائي بنمط صامت للهاتف أثناء أوقات الصلاة.</li>
+                    <li><i class="fa-solid fa-check"></i> أذانات بـ 8 مؤذنين مع إشعار التنبيه المسبق بـ 5 دقائق.</li>
+                    <li><i class="fa-solid fa-check"></i> مصحف المدينة المنورة، الأذكار، البوصلة الشريفة للقبلة، والرقية الشرعية.</li>
+                    <li><i class="fa-solid fa-check"></i> السبحة الإلكترونية التفاعلية وحماية الإعدادات برمز PIN.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('سكينة', 'تطبيق سَكِينَة (Sakinah)')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
         </div>
-        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
-      </div>
 
-      <div class="project-card">
-        <div>
-          <div class="proj-badge">تطبيق تجارة إلكترونية</div>
-          <h3>متجر إلكتروني وتوصيل طلبات</h3>
-          <p>تطبيق فلاتر مخصص للتسوق وعرض الأصناف وسلة المشتريات وتتبع الطلبات لحظياً مع ربط كامل مع Laravel REST API.</p>
+        <!-- 2. نظام محاسبي ومخزني ERP متكامل -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">نظام محاسبي ومخزني ERP متكامل (Flutter & SQLite)</div>
+                <h3>تطبيق الحسابات والأنظمة المالية</h3>
+                <p>نظام إداري ومحاسبي شامل لإدارة الديون، المخازن، الشركات، الحسابات والباركود مع عمل كامل 100% بدون إنترنت (Offline-First).</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> <b>معالج تأسيس النظام والشركات:</b> إعداد أولي ذكي من 7 خطوات لتحديد نشاط الشركة، العملات، الفروع، والسنة المالية.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>كتالوج الأصناف والباركود المتعدد (Multi-UOM & Multi-Barcode):</b> دعم ربط الصنف بعدة وحدات قياس (حبة، كرتون، صندوق) وباركودات مختلفة واحتساب معاملات التحويل تلقائياً مع ماسح باركود تفاعلي.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>دليل وشجرة الحسابات (Chart of Accounts):</b> شجرة محاسبية من 3 مستويات ترقيم تلقائي وحظر التقييد المباشر إلا على حسابات المستوى الثالث.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>السنوات المالية والفترات المحاسبية:</b> إدارة إقفال وإعادة فتح الفترات الشهرية والربع سنوية مع توثيق سجل التدقيق والمنع من الترحيل للفترات المغلقة.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>قيود المخزن والجرد والرصيد الافتتاحي:</b> دورة مستندات متكاملة (مسودة، اعتماد مرحّل، إلغاء وعكس حركات) مع تحديث دفتر المخزن الحي (Stock Ledger).</li>
+                    <li><i class="fa-solid fa-check"></i> <b>الحماية والأمان الذكي:</b> قفل التطبيق برمز PIN والمصادقة الحيوية بالبصمة (Biometric / local_auth) تلقائياً عند تشغيل التطبيق.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('تطبيق_الحسابات', 'تطبيق الحسابات والأنظمة المالية')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
         </div>
-        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
-      </div>
 
-      <div class="project-card">
-        <div>
-          <div class="proj-badge">نظام إداري وسطح مكتب</div>
-          <h3>نظام إدارة المشتريات والتقارير</h3>
-          <p>برنامج لويندوز والموبايل لإدارة فواتير المشتريات، كشوفات حساب الموردين والعملاء، وتصدير التقارير لملفات Excel و PDF.</p>
+        <!-- 3. تطبيق دفتر الديون والحسابات (Notes Ledger) -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">تطبيق مالي وإداري ذكي (Flutter & Firebase & SQLite)</div>
+                <h3>تطبيق دفتر الديون والحسابات (Notes Ledger)</h3>
+                <p>تطبيق مالي متكامل لإدارة الديون والحسابات التجارية، يتيح المزامنة الحية والتأكيد المتبادل بين العملاء والموردين مع عمل كامل بدون إنترنت (Offline-First).</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> مزامنة فورية آمنة للديون والعمليات المالية بين المستخدمين مع حظر التكرار إلكترونياً.</li>
+                    <li><i class="fa-solid fa-check"></i> تسجيل السداد العام والمباشر مع التوزيع الذكي للدفعات على الديون واحتساب المتبقي والمقبوضات.</li>
+                    <li><i class="fa-solid fa-check"></i> كشوفات حساب تفصيلية وشاملة، وتصنيف حسب العملات المختلفة مع التصفية بالاتجاه (لك / عليك).</li>
+                    <li><i class="fa-solid fa-check"></i> إشعارات تنبيهية لحظية (FCM) بنظام القبول والرفض المباشر للديون والمصادقة على الحسابات.</li>
+                    <li><i class="fa-solid fa-check"></i> حماية الحساب بنظام الجلسة الموحدة (ANDROID_ID)، إدارة الأقساط، والعمل الكامل بدون إنترنت.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('دفتر_الديون', 'تطبيق دفتر الديون والحسابات (Notes Ledger)')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
         </div>
-        <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
-      </div>
+
+        <!-- 4. جدار حماية محلي ذكي Net Blocker -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">جدار حماية محلي ذكي (Flutter, BLoC & Android Kotlin VpnService)</div>
+                <h3>تطبيق Net Blocker (Smart Network Access Control)</h3>
+                <p>تطبيق متقدم لحظر وتصفية حركة شبكة الإنترنت على مستوى التطبيقات بشكل فردي، للتحكم في استهلاك البيانات وتعزيز الخصوصية والتركيز دون سيرفرات خارجية.</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> <b>حظر مخصص للشبكات:</b> تفصيل صلاحيات الاتصال لكل تطبيق بشكل مستقل على شبكات الـ Wi-Fi أو بيانات الجوال (Mobile Data).</li>
+                    <li><i class="fa-solid fa-check"></i> <b>تطبيق جدار حماية محلي (Local Loopback VPN):</b> استخدام Android <code>VpnService</code> لإسقاط حزم بيانات التطبيقات المحظورة (Packet Dropping) بدون تأخير للشبكة.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>محرك جدولة زمنية تلقائي:</b> حظر وصول تطبيقات معقدة تلقائياً في أوقات وساعات محددة خلال أيام الأسبوع.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>معمارية BLoC وحماية برمز PIN:</b> إدارة كاملة للحالات وقواعد البيانات مع نظام قفل حماية للإعدادات لمنع إيقاف الحظر من الأطفال أو المتطفلين.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('جدار_الحماية', 'تطبيق Net Blocker')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <!-- 5. تهيئة وتخصيص أنظمة المؤسسات ERPNext & Frappe -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">نظام إداري وتطوير مؤسسي (ERPNext & Frappe)</div>
+                <h3>تخصيص وتأسيس نظام ERPNext & Frappe للمؤسسات والشركات</h3>
+                <p>إعداد، تهيئة، وتطوير ميزات مخصصة متكاملة لإدارة الشركات والمؤسسات التجارية والصناعية على بيئة Frappe Framework و ERPNext (الشبيه بـ Odoo).</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> <b>دورة المشتريات والمبيعات المتكاملة:</b> إعداد عروض الأسعار، أوامر الشراء والمبيعات، فواتير الشراء والتوريد، والربط المباشر مع الحسابات والموردين.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>إدارة المخازن والجرد الحي:</b> تهيئة المستودعات والفروع، تتبع حركة الأصناف والرصيد الافتتاحي، وتعديل وإعادة تقييم المخزون تلقائياً.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>نظام الكاشير ونقاط البيع السريعة (POS):</b> تخصيص واجهات نقاط البيع للبيع السريع، التعامل مع الخصومات، والطباعة الحرارية المباشرة للفواتير.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>تخصيص النماذج والتقارير (Custom DocTypes & Print Formats):</b> إنشاء نماذج مخصصة، برمجة سكريبتات Python & JS، وتصميم قوالب الطباعة والتقارير المالية والتحليلية.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>ربط وتكامل النظام عبر REST APIs:</b> ربط ERPNext مع تطبيقات الموبايل والويب والأنظمة الخارجية لمزامنة المبيعات والمخازن لحظياً.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('نظام_ERPNext', 'نظام ERPNext & Frappe للمؤسسات')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <!-- 6. تطبيق إدارة المشاريع والجمعيات المائية والخدمية -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">نظام إداري وميداني شامل (Flutter & Laravel & Hive)</div>
+                <h3>تطبيق ونظام إدارة الجمعيات والمشاريع المائية والخدمية</h3>
+                <p>منظومة إدارية وميدانية متكاملة لإدارة المشاريع والمؤسسات المائية والخدمية، إدارة المشتركين والعدادات، الفوترة والتحصيل المالي، مع عمل كامل بدون إنترنت (Offline-First).</p>
+                <ul class="project-features">
+                    <!-- 1. الأمان والجلسات -->
+                    <li>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <b>منظومة الأمان والتحكم بالجلسات (Single-Device Auth & 2FA Flow):</b>
+                        حماية الحسابات بمنع تعدد الأجهزة وتدمير التوكنات القديمة تلقائياً، مع تفعيل نظام الموافقة التفاعلية لحظياً بين الأجهزة (طلب الإذن من الجهاز الرئيسي عند محاولة الدخول من جهاز جديد)، وقفل التطبيق التلقائي برمز PIN عند الخمول بالخلفية.
+                    </li>
+
+                    <!-- 2. الصلاحيات والأدوار -->
+                    <li>
+                        <i class="fa-solid fa-user-gear"></i>
+                        <b>إدارة المسميات الوظيفية والصلاحيات الهيكلية (Dynamic Categorized RBAC):</b>
+                        نظام مرن لإضافة وتعيين الأدوار (إدارة المشروع، رئيس لجنة، جانب مالي، جانب فني، مندوب، أمين صندوق، إلخ)، مع تقسيم الصلاحيات إلى بطاقات رئيسية وفرعية عصرية تدعم خاصية "تحديد / إلغاء الكل" بنقرة واحدة، ودعم الدمج بين صلاحيات المسمى الوظيفي والتخصيص الفردي للمستخدم.
+                    </li>
+
+                    <!-- 3. دورة المزامنة والاعتماد -->
+                    <li>
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <b>دورة مزامنة واعتماد طلبات الاشتراك (3-Stage Subscriber Workflow):</b>
+                        سير عمل ميداني يبدأ من المسح وتعبئة الاستمارات جغرافيّاً وإحصائياً بدون إنترنت (Offline-First via Hive DB)، مروراً بمرحلة الاعتماد الأولي من رئيس لجنة المستفيدين، وصولاً لمرحلة التأكيد النهائي من إدارة المشروع وتوليد ملفات الاشتراك.
+                    </li>
+
+                    <!-- 4. البنية التحتية والشبكة المائية -->
+                    <li>
+                        <i class="fa-solid fa-faucet-drip"></i>
+                        <b>إدارة البنية التحتية والتشغيل المائي (Infrastructure & Water Assets):</b>
+                        إدارة كاملة لهيكلية ومكونات الخزانات الرئيسية والفرعية وسقوف الاستخدام، تتبع الآبار ومنسوب الضخ وكميات الإنتاج، تتبع مسارات خطوط النقل والتوزيع، مع سجلات صيانة العدادات والشبكة المائية.
+                    </li>
+
+                    <!-- 5. العدادات والقراءات -->
+                    <li>
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <b>إدارة العدادات والقراءات الدوريّة (Smart Meter & Consumption Tracking):</b>
+                        تسجيل متابعة العدادات المائية، الإدخال اليومي والشهري للقراءات، احتساب الفوارق والاستهلاك، وإدارة عمليات ترحيل قراءات نهاية الدورة المائية.
+                    </li>
+
+                    <!-- 6. الجانب المالي والتحصيل -->
+                    <li>
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <b>المنظومة المالية والتحصيل (Billing, Receipts & Water Tariffs):</b>
+                        إصدار الفواتير التلقائية واليدوية وفق الشرائح والتسعيـرات المعتمدة، إدارة سندات القبض والتحصيل المالي، مع تفعيل دورة ترحيل المقبوضات والسندات الماليّة وتتبع التاريخ التسعيري للشبكة.
+                    </li>
+
+                    <!-- 7. التقارير والتحليلات -->
+                    <li>
+                        <i class="fa-solid fa-chart-line"></i>
+                        <b>محرك التقارير المتقدم والتصدير (PDF & Excel Engine):</b>
+                        لوحة تحكم تحليليّة تفاعلية لحركة التحصيل والمبالغ المتبقية لكل خزان، مع إمكانية توليد وتصدير ملفات طباعة بصيغة PDF (تتضمن صور الهويات والمستندات) وتصدير كشوفات المراجعة الميدانية والمالية بصيغة Excel متقدمة.
+                    </li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('الجمعيات_المائية', 'نظام إدارة المشاريع والجمعيات المائية')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <!-- 7. تطبيق حماية وإخفاء البيانات (Steganography - SIRR) -->
+        <div class="project-card">
+            <div>
+                <div class="proj-badge">تطبيق حماية وإخفاء البيانات (Flutter & Steganography)</div>
+                <h3>تطبيق سِرّ (SIRR)</h3>
+                <p>تطبيق ذكي ومتخصص في إخفاء الرسائل السرية داخل نصوص ظاهرة تبدو عادية باستخدام تقنية الأخفاء النصي (Text Steganography) والمحارف غير المرئية، مع عمل كامل 100% بدون إنترنت لحماية الخصوصية المطلقة.</p>
+                <ul class="project-features">
+                    <li><i class="fa-solid fa-check"></i> <b>محرك إخفاء نصي ذكي (Steganography Engine):</b> تضمين النصوص السرية بشكل غير مرئي داخل أي نص عادي باستخدام محارف (Zero-Width Unicode Characters) مع خوارزمية ترميز بتات مخصصة (Bit-Stream Encoding) وترويسة للتحقق من سلامة النص.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>كشف وقراءة سريعة (Decoding & Validation):</b> تحليل النصوص المُستلمة، التحقق من بروتوكول ورأس البيانات (Header Verification & Integrity Check)، واستخراج النص المخفي بدقة عالية بنقرة زر.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>خصوصية وأمان 100% (Offline-First & Zero Storage):</b> معالجة البيانات لحظياً على جهاز المستخدم بدون الحاجة لاتصال بالإنترنت، ودون حفظ أي رسائل في قواعد بيانات أو خوادم خارجية.</li>
+                    <li><i class="fa-solid fa-check"></i> <b>تكامل تفاعلي مع الحافظة (Clipboard Integration):</b> ميزة النسخ السريع للرسائل المدمجة واللصق المباشر بنقرة واحدة لتسهيل المشاركة والتداول عبر تطبيقات التراسل (WhatsApp, Telegram, إلخ).</li>
+                    <li><i class="fa-solid fa-check"></i> <b>معمارية برمجية منظمة (GetX State Management):</b> بناء التطبيق باستخدام Flutter، وإدارة الحالات بفاعلية وخفة عبر GetX Controller، مع فصل تام بين المنطق البرمجي (Core Services) والواجهات (UI).</li>
+                    <li><i class="fa-solid fa-check"></i> <b>تجربة مستخدم متميزة (Material 3 RTL UI):</b> واجهة حديثة جذابة تدعم الاتجاه العربي بالكامل (RTL)، تحتوي على تنبيهات تفاعلية (Snackbars)، بطاقات إدخال مخصصة، ودليل إرشادي واستخدام تفاعلي.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button class="btn-act gallery" onclick="openGallery('تطبيق_سر', 'تطبيق حماية وإخفاء البيانات (سِرّ)')">
+                    <i class="fa-solid fa-images"></i> استعراض شاشات المشروع 🖼️
+                </button>
+                <a href="https://wa.me/967772851873" class="btn-act call" target="_blank">طلب تفاصيل المشروع <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+        </div>
+
     </div>
-  </section>
+</section>
 
-  <!-- التذييل -->
-  <footer>
+<!-- نافذة العرض الضوئية التفاعلية لمعرض الصور (LightBox Modal) -->
+<div class="modal-overlay" id="galleryModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <span class="modal-title" id="modalProjectTitle">معرض شاشات المشروع</span>
+            <button class="btn-close" onclick="closeGallery()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <button class="nav-btn prev" onclick="prevGalleryImage()"><i class="fa-solid fa-chevron-right"></i></button>
+            <img src="" id="modalMainImage" class="main-gallery-img" alt="شاشة المشروع" />
+            <button class="nav-btn next" onclick="nextGalleryImage()"><i class="fa-solid fa-chevron-left"></i></button>
+        </div>
+        <div class="modal-footer">
+            <span class="img-counter" id="modalImageCounter">جاري التحميل...</span>
+            <div class="thumbnails-row" id="modalThumbnails"></div>
+        </div>
+    </div>
+</div>
+
+<!-- التذييل -->
+<footer>
     <p>جميع الحقوق محفوظة &copy; 2026 | <strong>ريان محمد نعمان علي</strong></p>
-    <p style="font-size: 0.85rem; margin-top: 8px;">مطور برمجيات وتطبيقات هواتف • صنعاء، اليمن</p>
-  </footer>
+    <p style="font-size: 0.85rem; margin-top: 8px;">مطور تطبيقات وأنظمة إدارية • صنعاء، اليمن</p>
+</footer>
 
-  <!-- جافاسكريبت لتبديل الوضع الليلي والنهاري بسلاسة -->
-  <script>
+<!-- جافاسكريبت لتبديل الثيم ومعرض الصور التفاعلي -->
+<script>
     const themeBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const html = document.documentElement;
@@ -649,7 +1023,7 @@
     themeBtn.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
       const targetTheme = current === 'dark' ? 'light' : 'dark';
-      
+
       html.setAttribute('data-theme', targetTheme);
       localStorage.setItem('site_theme', targetTheme);
       refreshIcon(targetTheme);
@@ -662,8 +1036,98 @@
         themeIcon.className = 'fa-solid fa-moon';
       }
     }
-  </script>
+
+    // ==========================================
+    // جافاسكريبت معرض الصور التفاعلي والمستجيب
+    // ==========================================
+    let currentGalleryImages = [];
+    let currentImageIndex = 0;
+
+    function openGallery(folderName, title) {
+        document.getElementById('modalProjectTitle').innerText = title;
+        document.getElementById('modalImageCounter').innerText = "جاري فحص وتحميل الصور...";
+        document.getElementById('modalMainImage').src = "";
+        document.getElementById('modalThumbnails').innerHTML = "";
+
+        currentGalleryImages = [];
+        currentImageIndex = 0;
+
+        const extensions = ['png', 'jpg', 'jpeg', 'webp'];
+        let loadPromises = [];
+
+        // فحص الصور من 1 إلى 30 داخل مجلد المشروع ديناميكياً بجميع الامتدادات
+        for (let i = 1; i <= 30; i++) {
+            extensions.forEach(ext => {
+                const imgUrl = `assets/${folderName}/${i}.${ext}`;
+                const p = new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => resolve(imgUrl);
+                    img.onerror = () => resolve(null);
+                    img.src = imgUrl;
+                });
+                loadPromises.push(p);
+            });
+        }
+
+        Promise.all(loadPromises).then(results => {
+            currentGalleryImages = results.filter(url => url !== null);
+            currentGalleryImages = [...new Set(currentGalleryImages)];
+
+            if (currentGalleryImages.length === 0) {
+                document.getElementById('modalMainImage').src = 'https://via.placeholder.com/800x600/0f172a/10b981?text=انسخ+الصور+داخل+مجلد+assets/' + encodeURIComponent(folderName);
+                document.getElementById('modalImageCounter').innerText = `انقل صورك داخل مجلد assets/${folderName}`;
+            } else {
+                renderGalleryImage(0);
+            }
+
+            document.getElementById('galleryModal').style.display = 'flex';
+        });
+    }
+
+    function renderGalleryImage(index) {
+        if (currentGalleryImages.length === 0) return;
+        currentImageIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
+
+        const activeUrl = currentGalleryImages[currentImageIndex];
+        document.getElementById('modalMainImage').src = activeUrl;
+        document.getElementById('modalImageCounter').innerText = `شاشة ${currentImageIndex + 1} من ${currentGalleryImages.length}`;
+
+        const thumbsContainer = document.getElementById('modalThumbnails');
+        thumbsContainer.innerHTML = '';
+        currentGalleryImages.forEach((url, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = url;
+            thumb.className = `gallery-thumb ${idx === currentImageIndex ? 'active' : ''}`;
+            thumb.onclick = () => renderGalleryImage(idx);
+            thumbsContainer.appendChild(thumb);
+        });
+    }
+
+    function nextGalleryImage() {
+        if (currentGalleryImages.length > 0) {
+            renderGalleryImage(currentImageIndex + 1);
+        }
+    }
+
+    function prevGalleryImage() {
+        if (currentGalleryImages.length > 0) {
+            renderGalleryImage(currentImageIndex - 1);
+        }
+    }
+
+    function closeGallery() {
+        document.getElementById('galleryModal').style.display = 'none';
+    }
+
+    // إغلاق وبث الأسهم للوحة المفاتيح
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('galleryModal').style.display === 'flex') {
+            if (e.key === 'Escape') closeGallery();
+            if (e.key === 'ArrowRight') prevGalleryImage();
+            if (e.key === 'ArrowLeft') nextGalleryImage();
+        }
+    });
+</script>
 
 </body>
 </html>
-
