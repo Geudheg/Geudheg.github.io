@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
@@ -379,7 +379,120 @@
         .projects-container {
           padding: 3rem 8%;
         }
+/* Professional Expertise Section */
 
+.expertise-section {
+    padding: 4rem 8%;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.expertise-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 35px rgba(0,0,0,.15);
+}
+
+.expertise-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        var(--accent),
+        var(--accent-cyan)
+    );
+}
+
+.expertise-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+}
+
+.expertise-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: .8rem;
+}
+
+.expertise-card p {
+    color: var(--text-dim);
+    line-height: 1.9;
+    font-size: .97rem;
+}
+
+.expertise-list {
+    list-style: none;
+    margin-top: 1.2rem;
+}
+
+.expertise-list li {
+    color: var(--text-dim);
+    margin-bottom: 9px;
+    display: flex;
+    gap: 10px;
+    font-size: .92rem;
+}
+
+.expertise-list i {
+    color: var(--accent);
+    margin-top: 5px;
+}
+
+.ai-card {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(6,182,212,.12),
+            transparent 55%
+        ),
+        var(--surface);
+}
+
+.expertise-label {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-size: .8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+@media(max-width:900px) {
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expertise-section {
+        padding: 3rem 5%;
+    }
+}
         .section-head {
           margin-bottom: 2rem;
         }
@@ -690,9 +803,29 @@
             <span class="pulsing-dot"></span> متاح لتنفيذ المشاريع البرمجية
         </div>
         <h1>أنا <span>ريان محمد نعمان علي</span></h1>
-        <div class="role-title">مهندس برمجيات • مطور تطبيقات (جوال • سطح مكتب • ويب) • ومكامل أنظمة ERPNext</div>
+        <div class="role-title">
+            Full-Stack Developer | Flutter Developer | ERPNext & Frappe Specialist
+        </div>
+
         <p class="bio-text">
-            عمري <strong>25 سنة</strong>، مقيم في <strong>صنعاء، اليمن</strong>. أمتلك خبرة عملية في تطوير تطبيقات الموبايل والأيفون وأجهزة سطح المكتب والويب باستخدام <strong>Flutter & Dart</strong>، مع بناء وربط واجهات الـ <strong>REST APIs</strong> المتقدمة بـ Laravel وقواعد البيانات، وتخصيص أنظمة إدارة المؤسسات والمبيعات والمخازن <strong>ERPNext & Frappe</strong> (النظام الإداري المتطور الشبيه بـ Odoo).
+            مطور برمجيات متخصص في بناء وتطوير التطبيقات والأنظمة الإدارية المتكاملة،
+            أمتلك خبرة عملية في تطوير تطبيقات متعددة المنصات باستخدام
+            <strong>Flutter & Dart</strong>، وبناء تطبيقات الويب والأنظمة الخلفية
+            باستخدام <strong>Laravel, PHP, JavaScript</strong>، بالإضافة إلى
+            تخصيص وتطوير أنظمة تخطيط موارد المؤسسات
+            <strong>ERPNext & Frappe Framework</strong>.
+            <br><br>
+            أعمل على تحويل المتطلبات والأفكار إلى حلول برمجية عملية، بدءاً من
+            تحليل النظام وتصميم قواعد البيانات والمعمارية البرمجية، وصولاً إلى
+            تطوير الواجهات، برمجة العمليات، التكامل بين الأنظمة، التقارير،
+            الاختبار والنشر.
+            <br><br>
+            أعتمد على أدوات الذكاء الاصطناعي المتقدمة في تسريع دورة التطوير،
+            تحليل الأكواد، اكتشاف الأخطاء، تحسين الأداء، وتطوير الحلول البرمجية
+            مع المراجعة والاختبار لضمان جودة النتائج.
+            <br><br>
+            أركز على بناء أنظمة قابلة للتوسع، آمنة، عملية، وتدعم العمل دون
+            اتصال بالإنترنت عند الحاجة.
         </p>
 
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -734,7 +867,148 @@
         </div>
     </div>
 </main>
+<!-- Professional Expertise -->
 
+<section class="expertise-section">
+
+    <div class="section-head">
+        <h2>التخصصات والخبرات المهنية</h2>
+        <p style="color:var(--text-dim)">
+            مجالات عملي التقنية والحلول البرمجية التي أعمل على تطويرها
+        </p>
+    </div>
+
+    <div class="expertise-grid">
+
+        <!-- Flutter -->
+
+        <div class="expertise-card">
+
+            <div class="expertise-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <span class="expertise-label">Cross-Platform Development</span>
+
+            <h3>تطوير التطبيقات متعددة المنصات</h3>
+
+            <p>
+                تطوير تطبيقات احترافية باستخدام Flutter وDart،
+                مع الاهتمام بالأداء وتجربة المستخدم والتكامل مع
+                خدمات النظام وقواعد البيانات.
+            </p>
+
+            <ul class="expertise-list">
+                <li><i class="fa-solid fa-check"></i> تطبيقات Android وiOS.</li>
+                <li><i class="fa-solid fa-check"></i> تطبيقات Windows Desktop.</li>
+                <li><i class="fa-solid fa-check"></i> تطبيقات Flutter Web.</li>
+                <li><i class="fa-solid fa-check"></i> GetX وإدارة الحالة والمعمارية البرمجية.</li>
+                <li><i class="fa-solid fa-check"></i> SQLite وHive وFirebase.</li>
+                <li><i class="fa-solid fa-check"></i> العمل دون إنترنت والمزامنة الذكية.</li>
+                <li><i class="fa-solid fa-check"></i> التكامل مع REST APIs باستخدام Dio.</li>
+                <li><i class="fa-solid fa-check"></i> خدمات Android Native والتكامل مع Kotlin.</li>
+            </ul>
+
+        </div>
+
+        <!-- Web Development -->
+
+        <div class="expertise-card">
+
+            <div class="expertise-icon">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+
+            <span class="expertise-label">Full-Stack Web Development</span>
+
+            <h3>تطوير مواقع وتطبيقات الويب</h3>
+
+            <p>
+                تصميم وتطوير تطبيقات ويب متكاملة تبدأ من واجهات
+                المستخدم الحديثة وصولاً إلى البرمجة الخلفية
+                وقواعد البيانات والتكامل مع الخدمات الخارجية.
+            </p>
+
+            <ul class="expertise-list">
+                <li><i class="fa-solid fa-check"></i> HTML5 وCSS3 وJavaScript.</li>
+                <li><i class="fa-solid fa-check"></i> تصميم واجهات Responsive ومتوافقة مع الجوال.</li>
+                <li><i class="fa-solid fa-check"></i> PHP وLaravel Framework.</li>
+                <li><i class="fa-solid fa-check"></i> بناء RESTful APIs.</li>
+                <li><i class="fa-solid fa-check"></i> MySQL وتصميم قواعد البيانات.</li>
+                <li><i class="fa-solid fa-check"></i> أنظمة تسجيل الدخول والصلاحيات.</li>
+                <li><i class="fa-solid fa-check"></i> لوحات التحكم والأنظمة الإدارية.</li>
+                <li><i class="fa-solid fa-check"></i> التكامل بين تطبيقات الويب والموبايل.</li>
+            </ul>
+
+        </div>
+
+        <!-- ERPNext -->
+
+        <div class="expertise-card">
+
+            <div class="expertise-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <span class="expertise-label">ERP Systems Development</span>
+
+            <h3>تطوير وتخصيص أنظمة ERPNext & Frappe</h3>
+
+            <p>
+                تخصيص وتطوير أنظمة تخطيط موارد المؤسسات،
+                وبناء حلول إدارية ومحاسبية ومخزنية تتوافق
+                مع طبيعة عمل الشركات والمؤسسات.
+            </p>
+
+            <ul class="expertise-list">
+                <li><i class="fa-solid fa-check"></i> تثبيت وإعداد ERPNext وFrappe.</li>
+                <li><i class="fa-solid fa-check"></i> إنشاء وتخصيص DocTypes.</li>
+                <li><i class="fa-solid fa-check"></i> تطوير Python Server Scripts وClient Scripts.</li>
+                <li><i class="fa-solid fa-check"></i> تطوير التطبيقات والوحدات المخصصة.</li>
+                <li><i class="fa-solid fa-check"></i> تخصيص المبيعات والمشتريات ونقاط البيع.</li>
+                <li><i class="fa-solid fa-check"></i> المحاسبة ودليل الحسابات والقيود المالية.</li>
+                <li><i class="fa-solid fa-check"></i> إدارة المخازن وحركة الأصناف والجرد.</li>
+                <li><i class="fa-solid fa-check"></i> Workflows والصلاحيات والأدوار.</li>
+                <li><i class="fa-solid fa-check"></i> التقارير وقوالب الطباعة والتصدير.</li>
+                <li><i class="fa-solid fa-check"></i> التكامل مع الأنظمة الخارجية عبر REST API.</li>
+            </ul>
+
+        </div>
+
+        <!-- AI Development -->
+
+        <div class="expertise-card ai-card">
+
+            <div class="expertise-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <span class="expertise-label">AI-Assisted Software Engineering</span>
+
+            <h3>البرمجة وتطوير الحلول باستخدام الذكاء الاصطناعي</h3>
+
+            <p>
+                توظيف أدوات الذكاء الاصطناعي الحديثة كمساعد هندسي
+                في تحليل المتطلبات وتسريع التطوير وتحسين جودة
+                الأكواد وبناء الحلول البرمجية المعقدة.
+            </p>
+
+            <ul class="expertise-list">
+                <li><i class="fa-solid fa-check"></i> تحليل المتطلبات وتحويلها إلى خطط تنفيذية.</li>
+                <li><i class="fa-solid fa-check"></i> تصميم قواعد البيانات والمعماريات البرمجية.</li>
+                <li><i class="fa-solid fa-check"></i> تسريع كتابة وتطوير الأكواد البرمجية.</li>
+                <li><i class="fa-solid fa-check"></i> اكتشاف الأخطاء وتحليل أسبابها وإصلاحها.</li>
+                <li><i class="fa-solid fa-check"></i> مراجعة الأكواد وتحسين الأداء والجودة.</li>
+                <li><i class="fa-solid fa-check"></i> المساعدة في تطوير واجهات المستخدم.</li>
+                <li><i class="fa-solid fa-check"></i> توثيق المشاريع وتحليل الأنظمة الكبيرة.</li>
+                <li><i class="fa-solid fa-check"></i> دمج الذكاء الاصطناعي ضمن سير عمل التطوير.</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- شبكة المعلومات السريعة والأرقام (Bento Grid) -->
 <section class="section-bento">
     <div class="bento-grid">
@@ -784,14 +1058,35 @@
             <h3>الترسانة التقنية والبيئات (Tech Stack)</h3>
             <p>الأدوات والتقنيات التي أعتمد عليها في بناء تطبيقات وأنظمة متكاملة عابرة للمنصات:</p>
             <div class="skills-pills">
-                <span class="skill-pill"><i class="fa-brands fa-flutter"></i> Flutter (Mobile, iOS, Desktop, Web)</span>
+
+                <span class="skill-pill"><i class="fa-solid fa-mobile-screen"></i> Flutter</span>
                 <span class="skill-pill"><i class="fa-solid fa-code"></i> Dart</span>
-                <span class="skill-pill"><i class="fa-solid fa-server"></i> ERPNext & Frappe (Odoo Alternative)</span>
-                <span class="skill-pill"><i class="fa-brands fa-laravel"></i> Laravel REST APIs</span>
-                <span class="skill-pill"><i class="fa-solid fa-database"></i> SQLite & MySQL & Hive</span>
-                <span class="skill-pill"><i class="fa-solid fa-wifi"></i> Offline-First Systems</span>
-                <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase Services</span>
+                <span class="skill-pill"><i class="fa-brands fa-android"></i> Android Native / Kotlin</span>
+                <span class="skill-pill"><i class="fa-brands fa-apple"></i> iOS Development</span>
+
+                <span class="skill-pill"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="skill-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span class="skill-pill"><i class="fa-brands fa-php"></i> PHP</span>
+                <span class="skill-pill"><i class="fa-brands fa-laravel"></i> Laravel</span>
+
+                <span class="skill-pill"><i class="fa-solid fa-cubes"></i> ERPNext</span>
+                <span class="skill-pill"><i class="fa-solid fa-server"></i> Frappe Framework</span>
+                <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
+
+                <span class="skill-pill"><i class="fa-solid fa-database"></i> MySQL</span>
+                <span class="skill-pill"><i class="fa-solid fa-database"></i> SQLite</span>
+                <span class="skill-pill"><i class="fa-solid fa-database"></i> Hive</span>
+                <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase</span>
+
+                <span class="skill-pill"><i class="fa-solid fa-plug"></i> REST API</span>
+                <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> API Integration</span>
                 <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+
+                <span class="skill-pill"><i class="fa-solid fa-brain"></i> AI-Assisted Development</span>
+                <span class="skill-pill"><i class="fa-solid fa-terminal"></i> Linux & CLI</span>
+                <span class="skill-pill"><i class="fa-solid fa-file-pdf"></i> PDF & Excel Reporting</span>
+
             </div>
         </div>
 
@@ -1105,8 +1400,46 @@
 
 <!-- التذييل -->
 <footer>
-    <p>جميع الحقوق محفوظة &copy; 2026 | <strong>ريان محمد نعمان علي</strong></p>
-    <p style="font-size: 0.85rem; margin-top: 8px;">مطور تطبيقات وأنظمة إدارية • صنعاء، اليمن</p>
+
+    <div style="font-size:1.5rem; margin-bottom:12px; color:var(--text)">
+        <i class="fa-solid fa-code" style="color:var(--accent)"></i>
+        ريان محمد نعمان علي
+    </div>
+
+    <p>
+        Software Developer | Flutter | Full-Stack Web | ERPNext & Frappe
+    </p>
+
+    <p style="font-size:.85rem; margin-top:12px">
+        صنعاء - اليمن | متاح للعمل عن بُعد وتنفيذ المشاريع البرمجية
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:20px; margin:20px 0">
+
+        <a href="https://github.com/Geudheg"
+           target="_blank"
+           style="color:var(--text-dim); font-size:1.5rem">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://wa.me/967772851873"
+           target="_blank"
+           style="color:#25D366; font-size:1.5rem">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <a href="tel:+967772851873"
+           style="color:var(--text-dim); font-size:1.5rem">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+
+    </div>
+
+    <p style="font-size:.8rem">
+        جميع الحقوق محفوظة © 2026
+        | ريان محمد نعمان علي
+    </p>
+
 </footer>
 
 <!-- جافاسكريبت لتبديل الثيم ومعرض الصور التفاعلي -->
